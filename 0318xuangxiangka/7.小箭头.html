@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{width: 80px;height: 30px;line-height: 30px; background: url("img/ico.gif") no-repeat 60px 15px;border: 1px solid #ccc;}
+    </style>
+</head>
+<body>
+    <div>列表</div>
+</body>
+</html>
+<script>
+    // 第一遍
+     // var aDiv = document.getElementsByTagName("div")[0];
+    // // console.log(aDiv)
+    // aDiv.onmouseover = function(){
+    //     aDiv.style.background = "url('img/ico.gif') no-repeat 60px -12px"
+    // };
+    // aDiv.onmouseout = function(){
+    //     aDiv.style.background = "url('img/ico.gif') no-repeat 60px 15px"
+    // };
+
+    // 第二遍
+    // var aDiv = document.getElementsByTagName("div")[0];
+    // // console.log(aDiv)
+    // aDiv.onmouseover = function(){
+    //     aDiv.style.background = "url('img/ico.gif') no-repeat 60px -12px"
+    // };
+    // aDiv.onmouseout = function(){
+    //     aDiv.style.background = "url('img/ico.gif') no-repeat 60px 15px"
+    // };
+
+    // 第三遍
+    var aDiv = document.getElementsByTagName("div")[0];
+    // console.log(aDiv)
+    aDiv.onmouseover = function(){
+        aDiv.style.background = "url('img/ico.gif') no-repeat 60px -12px"
+    };
+    aDiv.onmouseout = function(){
+        aDiv.style.background = "url('img/ico.gif') no-repeat 60px 15px"
+    };
+
+</script>

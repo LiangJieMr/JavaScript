@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div,p,ul,li{margin: 0;padding: 0;}
+        .nav{width: 100%;height: 50px;background: #ccc;overflow: hidden;}
+        .nav .inner{width: 1200px;height: 50px; margin: 0 auto;}
+        .nav .inner span{float: right;margin-right: 15px;margin-left: 15px; line-height: 50px;}
+        /* .nav .inner span.geRen{margin-right: 50px;} */
+        .nav .inner span.geRen .i1{float: right; z-index:1;width: 0px;height: 0px;border-bottom: 6px solid #fff;border-left: 6px solid #ccc;border-right: 6px solid #ccc;position: absolute;top: 23px;left: 1355px;}
+        .nav .inner span.geRen .i2{z-index:1;float: right;width: 0px;height: 0px;border-top: 6px solid #fff;border-left: 6px solid #ccc;border-right: 6px solid #ccc;position: absolute;top: 23px;left: 1355px;}
+        .content{width: 1200px;height: auto;margin: 0 auto;}
+        .content .list{display: none; float: right; width: 80px;height: auto;background: sandybrown;padding: 15px 10px;}
+        .content .list ul li{list-style: none;margin-bottom: 5px;cursor: pointer;}
+        .content .list ul li:hover{color: red;}
+        .content .left-top{overflow: hidden; float: left; width: 500px;height: 300px;border: 1px solid #ccc;margin-top: 200px;background: #c8c8c8;}
+        .content .left-top .faWen{overflow: hidden;padding: 0 20px; width: 100%;height: 30px;line-height: 30px;background: lavender;}
+        .content .left-top .left-inn{padding: 10px;}
+        .content .left-top .faWen .time{float:right; font-size: 12px;padding-right: 40px;}
+        .content .right-top{display: none; overflow: hidden;margin-left: 20px; float: left;width: 500px;height: 300px;border: 1px solid #ccc;margin-top: 200px;background: #c8c8c8;}
+        .content .right-top .faWen{overflow: hidden;padding: 0 20px;width: 100%;height: 30px;line-height: 30px;background: lavender;}
+        .content .right-top .faWen .time{float:right; font-size: 12px;padding-right: 40px;}
+        .content .right-top .right-inn{padding: 10px;}
+        .zheBi{display: none; z-index:2;width: 100%;height: 100%;background: #000;opacity: 0.3;position: absolute;}
+        .tanKuang{display: none;border:1px solid #ccc; z-index:3;width: 500px;height: 300px;background: #fff;position: absolute;margin: auto;left: 0;top: 0;right: 0;bottom: 0;}
+        .tanKuang .tan-top{text-align: center; width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #ccc;}
+        .tanKuang .tan-top .fa{margin-left: 40px;}
+        .tanKuang .tan-top .close{float: right;margin-right: 20px;cursor: pointer;}
+        .tanKuang .tan-div{padding: 30px;}
+        .tanKuang .tan-div p{margin-bottom: 20px;}
+        .tanKuang .tan-div button{padding: 10px 20px;background:powderblue;border: none;color: white;margin-left: 50px;}
+        #inp1{width: 250px;height: 80px;}
+ </style>
+</head>
+<body>
+    <div class="zheBi"></div>
+    <div class="nav">
+        <div class="inner">
+                <span class="geRen">个人中心<i class="i1"style = "display:block;"></i><i class="i2"style = "display:none;"></i></span>
+                <span>注册</span>
+                <span>登陆</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="list">
+            <ul>
+                <li class="FaWen">发文</li>
+                <li>换肤</li>
+                <li>帮助</li>
+                <li>退出</li>
+            </ul>
+        </div>
+        <div class="left-top">
+            <p class="faWen">发文一<span class="time">2018-02-21 12:23:12</span></p>
+                 <p>哇哈哈真好喝</p>
+           <div class="left-inn">
+                <p>旺仔小牛奶真好喝</p>
+                <p>旺仔大牛奶不好喝</p>
+            </div>
+        </div>
+        <div class="right-top">
+            <p class="faWen">发文二<span class="time" id = "time"></span></p>
+            <div class="right-inn">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="tanKuang">
+        <p class="tan-top">
+            <span class="fa">发表博文</span>
+            <span class="close">关闭</span>
+        </p>
+        <div class="tan-div">
+            <p>
+                <span>标 题:</span>
+                <input id="inp" type="text" value="">
+                <span class="Xing">(*标题不可为空)</span>
+            </p>
+           <p>
+                <span>内 容:</span>
+                <input type="text" name="" id="inp1" value="">
+                <span class="Xing">(*标题不可为空)</span>
+           </p>
+           <button>发表</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    //获取元素
+    var aInp = document.getElementById("inp");
+    var aClose = document.getElementsByClassName("close")[0];
+    var aTex = document.getElementById("inp1");
+    var aBut = document.getElementsByTagName("button")[0];
+    var aTan = document.getElementsByClassName("tanKuang")[0];
+    var aXing = document.getElementsByClassName("Xing")[0];
+    var aXing1 = document.getElementsByClassName("Xing")[1];
+    var aZheBi = document.getElementsByClassName("zheBi")[0];
+    var aGeRen = document.getElementsByClassName("geRen")[0];
+    var aI = document.getElementsByClassName("i1")[0];
+    var aI2 = document.getElementsByClassName("i2")[0];
+    var aList = document.getElementsByClassName("list")[0];
+    var aFaEen = document.getElementsByClassName("FaWen")[0];
+    var aRightInn = document.getElementsByClassName("right-inn")[0];
+    var aTime = document.getElementById("time");
+    var aRight_top = document.getElementsByClassName("right-top")[0];
+
+    aFaEen.onclick = function(){
+        aZheBi.style.display = "block";
+        aTan.style.display = "block";
+    }
+
+    //当鼠标触碰的时候
+    aGeRen.onmouseover = function(){
+        aList.style.display = "block";
+        aI.style.display = "none";
+        aI2.style.display = "block";
+    }
+    aGeRen.onmouseout = function(){
+        // aList.style.display = "none";
+        aI.style.display = "block";
+        aI2.style.display = "none";
+    }
+    aList.onmouseover = function(){
+        aList.style.display = "block";
+    }
+    aList.onmouseout = function(){
+        aList.style.display = "none";
+    }
+    //补零函数
+    function zero(n){
+        if(n < 10){
+            return "0" + n;
+        }else{
+            return "" + n;
+        }
+    }
+
+    //定义一个正则  空白
+    var reg = /./;
+    aBut.onclick = function(){
+        if(reg.test(aInp.value) && reg.test(aTex.value)){
+            aTan.style.display = "none";
+            aZheBi.style.display = "none"
+             //获取输入的内容
+            var oh2 = document.createElement("h2");
+            oh2.innerHTML = aInp.value;
+            var pp = document.createElement("p");
+            pp.innerHTML = aTex.value;
+            aRightInn.appendChild(oh2);
+            aRightInn.appendChild(pp);
+            //获取当前时间
+            //创建一个时间对象
+            var aDate = new Date();
+            //获取当前年份
+            var year = aDate.getFullYear();
+            // console.log(year)
+            //获取当前月份
+            var month = aDate.getMonth();
+            // console.log(month)
+            //获取当前日期
+            var date = aDate.getDate();
+            // console.log(date)
+            //获取当前时间
+            var hours = aDate.getHours();
+            // console.log(hours)
+            //获取当前分钟
+            var minutes = aDate.getMinutes();
+            // console.log()
+            //获取当前秒数
+            var seconds = aDate.getSeconds();
+            // console.log(seconds)
+            aTime.innerHTML = zero(year)+"-"+zero(month+1)+"-"+zero(date)+" "+zero(hours)+":"+zero(minutes)+":"+zero(seconds);
+            aRight_top.style.display = "block";
+        }else{
+            aTan.style.display = "block";
+            aXing.style.color = "red";
+            aXing1.style.color = "red";
+        }
+    }
+    aClose.onclick = function(){
+            aTan.style.display = "none";
+            aZheBi.style.display = "none"
+    }
+   
+
+  
+
+
+
+</script>

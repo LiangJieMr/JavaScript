@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,p,div,input{margin: 0;padding: 0;}
+        input{width: 400px;height: 30px;outline: none;font-size: 24px;}
+    </style>
+</head>
+<body>
+    <p><input type="text" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"><span>输入数字求和</span></p>
+    <button>求和</button>
+    <div></div>
+</body>
+</html>
+<script>
+    // 第一遍
+    // var aInp = document.getElementsByTagName("input")[0];
+    // var aBtn = document.getElementsByTagName("button")[0];
+    // var aDiv = document.getElementsByTagName("div")[0];
+    // var sum = 0;//保存值
+    // var aValue = aInp.value;
+    // var arrValue = aValue.split(",");
+    // aBtn.onclick = function(){
+    //     for(var i = 0; i < arrValue.length; i++){
+    //         sum = sum + parseInt(arrValue[i])
+    //     }
+    //     aDiv.innerHTML = sum;
+    // }
+
+    // 第二遍
+    // var aInp = document.getElementsByTagName("input")[0];
+    // var aBtn = document.getElementsByTagName("button")[0];
+    // var aDiv = document.getElementsByTagName("div")[0];
+    // var sum = 0;//保存值
+    // var aValue = aInp.value;
+    // var arrValue = aValue.split(",");
+    // aBtn.onclick = function(){
+    //     for(var i = 0; i < arrValue.length; i++){
+    //         sum = sum + parseInt(arrValue[i])
+    //     }
+    //     aDiv.innerHTML = sum;
+    // }
+
+    // 第三遍
+    var aInp = document.getElementsByTagName("input")[0];
+    var aBtn = document.getElementsByTagName("button")[0];
+    var aDiv = document.getElementsByTagName("div")[0];
+    var sum = 0;//保存值
+    var aValue = aInp.value;
+    var arrValue = aValue.split(",");
+    aBtn.onclick = function(){
+        for(var i = 0; i < arrValue.length; i++){
+            sum = sum + parseInt(arrValue[i])
+        }
+        aDiv.innerHTML = sum;
+    }
+
+
+</script>

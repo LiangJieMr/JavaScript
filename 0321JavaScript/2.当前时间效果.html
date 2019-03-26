@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{width: 100%;height: 400px;background: black;color: #fff;font-size: 35px;text-align: center;line-height: 400px;}
+    </style>
+</head>
+<body>
+    <div>xxx年xxx月xxx日xxx时xxx分xxx秒星期xxx</div>
+</body>
+</html>
+<script>
+    //获取元素
+    var aDiv = document.getElementsByTagName("div")[0];
+    //写一个补零函数
+    function zero(n){
+        if(n < 10){
+            return "0" + n;
+        }else{
+            return "" + n;
+        }
+    }
+
+    //一个函数
+    function time(){
+        //创建一个时间对象
+        var aDate = new Date();
+        //获取当前年份
+        var year = aDate.getFullYear();
+        // console.log(year)
+        //获取当前月份
+        var month = aDate.getMonth();
+        // console.log(month)
+        //获取当前日期
+        var date = aDate.getDate();
+        // console.log(date)
+        //获取当前时间
+        var hours = aDate.getHours();
+        // console.log(hours)
+        //获取当前分钟
+        var minutes = aDate.getMinutes();
+        // console.log()
+        //获取当前秒数
+        var seconds = aDate.getSeconds();
+        // console.log(seconds)
+        //获取当天周几
+        var wek = aDate.getDay();
+        // console.log(wek)
+        //定义一个变量存放周几
+        var week = null;
+        //判断周几
+        switch(wek){
+            case 0:
+                week = "日"
+                break;
+            case 1:
+                week = "一"
+                break;
+            case 2:
+                week = "二"
+                break;
+            case 3:
+                week = "三"
+                break;
+            case 4:
+                week = "四"
+                break;
+            case 5:
+                week = "五"
+                break;
+            case 6:
+                week = "六"
+                break;
+        }
+        //添加到页面输出
+        aDiv.innerHTML = zero(year)+"年"+zero(month)+"月"+zero(date)+"日"+zero(hours)+"时"+zero(minutes)+"分"+zero(seconds)+"秒星期"+week;
+    }
+    time();
+    
+    //写一个定时器
+    setInterval(time,1000);
+
+
+    
+
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var GLOBAL = {
+        // namespace : {
+        //     a : "hello",
+        // },
+    };
+    GLOBAL.namespace = function(str){
+        var arr = str.split("."),o=GLOBAL;
+        for(i = (arr[0] = "GLOBAL") ? 1 : 0; i < arr.length; i++){
+            o[arr[i]] = o[arr[i]] || {};
+            o = o[arr[i]];
+        }
+    }
+    console.log(GLOBAL.namespace("12.31"));
+
+</script>
+<!-- <script>
+    var str = {};
+</script>
+<script>
+    (function(){
+        var a = 0;
+        str.nan = a;
+    })()
+</script>
+<script>
+    (function(){
+        a = str.nan;
+        console.log(a)
+    })()    
+</script> -->

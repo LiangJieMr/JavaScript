@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #inp{float: left;color: #ccc; padding-left: 10px; widows: 100px;height: 40px;background: url(img/left.jpg)no-repeat;outline: none;border:none;}
+        #btn{float: left; width: 42px;height: 42px;background: url(img/right.jpg)no-repeat;outline: none;border:none;}
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="inp"value="请输入">
+    <input type="button" name="" id="btn">
+</body>
+</html>
+<script>
+    // 第一遍
+    // var aInp = document.getElementById("inp");
+    // var aBtn = document.getElementById("btn");
+    // aInp.onfocus = function(){
+    //     if(aInp.value == "请输入"){
+    //         aInp.value = "";
+    //         aInp.style.color = "black";
+    //     }
+    // }
+    // aInp.onblur = function(){
+    //     if(aInp.value == ""){
+    //         aInp.value = "请输入";
+    //         aInp.style.color = "#ccc";
+    //     }
+    // }
+
+    var aInp = document.getElementById("inp");
+    var aBtn = document.getElementById("btn");
+    aInp.onfocus = function(){
+        if(aInp.value == "请输入"){
+            aInp.value = "";
+            aInp.style.color = "black";
+        }
+    }
+    aInp.onblur = function(){
+        if(aInp.value == ""){
+            aInp.value = "请输入";
+            aInp.style.color = "#ccc";
+        }
+    }
+</script>

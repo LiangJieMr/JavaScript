@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div,ul,li,p{margin: 0;padding: 0;}
+        body{background: url(img/1.jpg) no-repeat;background-size: cover;}
+        .header{width: 100%;height: 35px;background: #eee;line-height: 35px;}
+        .header .header_inner{width: 1200px;height: 35px;margin: 0 auto;}
+        .header .header_inner div{float: right;width: 70px;}
+        .header .header_inner div.geRen ul{display: none;position: relative; width: 80px;height: 120px;background:#eee;padding: 5px 5px;list-style: none;}
+        .header .header_inner div.geRen ul li:hover{color: red;cursor: pointer;}
+        .content{display: none; padding: 10px 10px; width: 600px;height: 340px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;background: white;}
+        .content ul li{list-style: none;float: left;width: 200px;height: 150px;}
+        .content ul li img{width: 100%;height: 100%;}
+        .content p{cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_inner">
+            <div class="geRen">个人中心
+                <ul>
+                    <li>发文</li>
+                    <li class="pifu">换肤</li>
+                    <li>退出</li>
+                </ul>
+            </div>
+            <div>登陆</div>
+            <div>注册</div>
+        </div>
+    </div>
+    <div class="content">
+        <p class="close">关闭</p>
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpeg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/cookie.js">
+	
+</script>
+<script>
+
+    var aGeRen = document.getElementsByClassName("geRen")[0];
+    var aUl = document.getElementsByTagName("ul")[0];
+    var aContent = document.getElementsByClassName("content")[0];
+    var aImg = aContent.getElementsByTagName("img");
+    var body = document.getElementsByTagName("body")[0];
+    var close = document.getElementsByClassName("close")[0];
+    var pifu = document.getElementsByClassName("pifu")[0];
+    var currentIndex = 0;
+    aGeRen.onmouseover = function(){
+        aUl.style.display = "block"
+    }
+    aGeRen.onmouseout = function(){
+        aUl.style.display = "none"
+    }
+    close.onclick = function(){
+        aContent.style.display = "none"
+    }
+    pifu.onclick = function(){
+        aContent.style.display = "block"
+    }
+    function Hf(index){
+        var src = aImg[index].src;
+        body.style.background = "url(" + src + ") no-repeat" 
+        body.style.backgroundSize = "cover";
+    }
+    for(var i = 0; i < aImg.length; i++){
+        aImg[i].index = i;
+        aImg[i].onclick = function(){
+            Hf(this.index);
+            setCookie("tabIndex",this.index,setCookieDate(7))
+        }
+    }
+    currentIndex = getCookie("tabIndex");
+    if(currentIndex){
+      Hf(currentIndex)
+    }
+</script>

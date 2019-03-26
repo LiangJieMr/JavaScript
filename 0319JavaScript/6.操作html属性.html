@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{ width:200px;height:200px; border: 2px solid #ccc; margin:30px auto;}
+    </style>
+</head>
+<body>
+<input type="text" id="text">
+<button id="add">Add Data</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    // 第一遍
+    // var aText = document.getElementById("text");
+    // var aAdd = document.getElementById("add");
+    // var aBox = document.getElementById("box");
+    // //点击获取文本框输入的内容
+    // aAdd.onclick = function () {
+    //    aBox.innerHTML += aText.value;
+    //     aText.value = "";
+    // };
+
+
+    var aText = document.getElementById("text");
+    var aAdd = document.getElementById("add");
+    var aBox = document.getElementById("box");
+    //点击获取文本框输入的内容
+    aAdd.onclick = function () {
+       aBox.innerHTML += aText.value;
+        aText.value = "";
+    };
+</script>

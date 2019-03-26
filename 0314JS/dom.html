@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    #heZi {
+        width: 20px;
+        height: 20px;
+        background:red;
+    }
+    .work1{
+        width: 150px;
+        height: 20px;
+        text-align: center
+    }
+    .caidan{
+        width: 200px;
+        line-height: 30px;
+        border: 1px solid #000;
+        text-align: center;
+    }
+    #caidan2{
+        display: none;
+    }
+    .caidan p{
+        width: 200px;
+        line-height: 30px;
+        text-align: center;
+        border-bottom: 1px solid #000;
+    }
+    .san{
+        width: 20px;
+        line-height: 20px;
+        text-align: center;
+        border: 1px solid #000;
+    }
+    .wenzi{
+        font-size: 20px
+    }
+    .big{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        /* position: relative; */
+    }
+    .smale{
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        /* position: absolute; */
+        /* left: 50%;
+        top: 50%;
+        margin-left: -50%;
+        margin-top: -50%;  */
+        /* transform: translate(-50%,-50%) */
+</style>
+
+<body>
+    <!-- <div id="heZi"></div>
+    <section class="sec">
+        <a href="#">a</a>
+    </section>
+    <section class="sec">
+        <a href="#">a</a>
+    </section>
+    <section class="sec">
+        <a href="#">a</a>
+    </section> -->
+    <!-- 第一题1） 鼠标碰到“十天内免登陆”几个字，页面就会有黄色框出现；离开这几个字黄色框就消失。 -->
+    <div class="work1">十天内免登陆</div>
+    <!-- 第二题 -->
+    <div class="caidan">菜单</div>
+    <div class="caidan" id="caidan2">
+    <p>西红柿打卤面</p> 
+    <p>鸡蛋火腿干锅饭</p>
+    <p>包子煎饼皮蛋粥</p>
+    <p>鸡腿米饭</p>
+    <p>抄鱼</p>
+    </div> 
+    <!-- 第三题 -->
+    <div class="san" onclick="on1()">1</div>
+    <div class="san" onclick="on2()">2</div>
+    <div class="san" onclick="on3()">3</div>
+    <div class="san" onclick="on4()">4</div>
+    <div class="san" onclick="on5()">5</div>
+    <div class="san" onclick="on6()">6</div>
+    <!-- 第四题 -->
+    <button class="but2">字号变小</button>
+    <button class="but1">字号增大</button>
+    <p class="wenzi">文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+    <!-- 第五题 -->
+    <div class="big">
+        <div class="smale"></div>
+    </div>
+   
+    <button class="yidong">点击移动</button>
+    <script src="./03_14myzuoye.js">
+        // //不需要考虑兼容性
+        // var oDivs = document.querySelector(".sec b");
+        // var oDivs1 = document.querySelectorAll(".sec a");
+        // console.log(oDivs)
+        // var oHeZi = document.querySelector("#heZi")
+        // oHeZi.onclick = function () {
+        //     oHeZi.style.backgroundColor = "green"
+        // }
+        // oHeZi.onmouseover = function () {
+        //     oHeZi.style.width = "100px";
+        //     oHeZi.style.height = "100px";
+        // }
+        // oHeZi.onmouseout = function () {
+        //     oHeZi.style.width = "10px";
+        //     oHeZi.style.height = "10px";
+        // }
+    </script>
+</body>
+
+</html>

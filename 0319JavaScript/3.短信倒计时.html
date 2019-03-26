@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .btn{display: block; width: 220px;height: 40px;line-height: 40px;text-align: center;font-size: 22px;margin: 50px auto;}
+    </style>
+</head>
+<body>
+    <input class="btn" type="button" value="点击发送短信">
+</body>
+</html>
+<script>
+    //第一遍
+    // //获取元素
+    // var aBtn = document.getElementsByClassName("btn")[0];
+    // //定义一个时间
+    // var num = 5;
+    // //定义一个变量保存定时器
+    // var timer = null;
+    // aBtn.onclick = function(){
+    //     clearInterval(timer);
+    //     aBtn.disabled = true;
+    //     aBtn.value = num+"秒后重新发送短信";
+    //     timer = setInterval(function(){
+    //         num--;
+    //         aBtn.value = num+"秒后重新发送短信";
+    //         if(num == 0){
+    //             clearInterval(timer);
+    //             aBtn.disabled = false;
+    //             num = 5;
+    //             aBtn.value = "点击重新发送短信";
+    //         }
+    //     },1000)
+    // }
+
+    //获取元素
+    var aBtn = document.getElementsByClassName("btn")[0];
+    //定义一个时间
+    var num = 5;
+    //定义一个变量保存定时器
+    var timer = null;
+    aBtn.onclick = function(){
+        clearInterval(timer);
+        aBtn.disabled = true;
+        aBtn.value = num+"秒后重新发送短信";
+        timer = setInterval(function(){
+            num--;
+            aBtn.value = num+"秒后重新发送短信";
+            if(num == 0){
+                clearInterval(timer);
+                aBtn.disabled = false;
+                num = 5;
+                aBtn.value = "点击重新发送短信";
+            }
+        },1000)
+    }
+
+</script>

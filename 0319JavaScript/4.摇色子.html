@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{font-size: 30px; width: 100px;height: 100px;border: 1px solid red;text-align: center;line-height: 100px;}
+        .result{font-size:30px;color: red;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="start">开始</button>
+    <button class="close">停止</button>
+    <p class="result"></p>
+</body>
+</html>
+<script>
+    //第一遍
+    // //获取元素
+    // var oBox = document.getElementsByClassName("box")[0];
+    // var oStart = document.getElementsByClassName("start")[0];
+    // var oClose = document.getElementsByClassName("close")[0];
+    // var oResule = document.getElementsByClassName("result")[0];
+    // //定义一个变量保存定时器
+    // var timer = null;
+    // //封装一个获取随机数的方法
+    // function getRandom(num){
+    //     var nub = parseInt(Math.random()*num)+1;
+    //     return nub;
+    // }
+    // oStart.onclick = function(){
+    //     timer = setInterval(function(){
+    //         oBox.innerHTML = getRandom(6);
+    //     },10)
+    // }
+    // oClose.onclick = function(){
+    //     clearInterval(timer);
+    //     if(oBox.innerHTML > 3){
+    //         oResule.innerHTML = "大"
+    //     }else{
+    //         oResule.innerHTML = "小"
+    //     }
+    // }
+
+    //获取元素
+    var oBox = document.getElementsByClassName("box")[0];
+    var oStart = document.getElementsByClassName("start")[0];
+    var oClose = document.getElementsByClassName("close")[0];
+    var oResule = document.getElementsByClassName("result")[0];
+    //定义一个变量保存定时器
+    var timer = null;
+    //封装一个获取随机数的方法
+    function getRandom(num){
+        var nub = parseInt(Math.random()*num)+1;
+        return nub;
+    }
+    oStart.onclick = function(){
+        timer = setInterval(function(){
+            oBox.innerHTML = getRandom(6);
+        },10)
+    }
+    oClose.onclick = function(){
+        clearInterval(timer);
+        if(oBox.innerHTML > 3){
+            oResule.innerHTML = "大"
+        }else{
+            oResule.innerHTML = "小"
+        }
+    }
+</script>

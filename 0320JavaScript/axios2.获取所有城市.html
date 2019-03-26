@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button>GET HOT CITY</button>
+    <button>GET ALL CITY</button>
+    <ul class="hotcity"></ul>
+</body>
+</html>
+<script>
+    //获取热门城市
+    var oBtn = document.getElementsByTagName("button")[0];
+    var oBtn1 = document.getElementsByTagName("button")[1];
+    var oHotCity = document.getElementsByClassName("hotcity")[0];
+    oBtn.onclick = function(){
+        axios.get("https://elm.cangdu.org/v1/cities?type=hot").then(function(response){
+            for(var i = 0; i < response.data.length; i++){
+                var oLi = document.createElement("li")
+                oLi.innerHTML = response.data[i].name;
+                oHotCity.appendChild(oLi);
+            }
+            console.log(response)
+        },function(error){
+            console.log("错误信息"+error)
+        });
+    }
+
+
+
+    //获取所有城市
+    oBtn1.onclick = function () {
+        axios.get("https://elm.cangdu.org/v1/cities",{params : {type : "group"}}).then(function (response) {
+            for(var i=0;i<response.data.A.length;i++){
+                var li = document.createElement("li");
+                li.innerHTML = response.data.A[i].name;
+                oHotCity.appendChild(li);
+            };
+            console.log(response);
+        },function (error) {
+            console.log("错误信息:" + error);
+        })
+    }
+
+
+
+
+
+</script>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        html,body,div,ul,li{margin:0; padding:0;}
+        #list{width:640px;margin:0 auto;}
+        #list ul{width:100%; list-style-type: none;}
+        #list ul li img{width:100%; height: 100%; display: block;}
+        html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 0.14rem;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: .18rem;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-slide .aimg{
+        width: 100%;
+    }
+    .qw1{
+        width: 100%;
+        position: absolute;
+        top: 0px;
+    }
+    .h1{
+        font-size: .3rem;
+    }
+    .op{
+        font-size: 0.2rem;
+        position: absolute;
+        top: 2.7rem;
+        letter-spacing: 0.03rem;
+    }
+    .op1{
+        font-size: 0.2rem;
+        position: absolute;
+        top: 3.3rem;
+        /* letter-spacing: 0.3em; */
+    }
+    .swiper-pagination-bullet{
+        width: .1rem;
+        height: .1rem;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+        margin: 0 0.06rem;
+        background: black;
+    }
+    </style>
+</head>
+  <script type="text/javascript">
+    var html = document.getElementsByTagName('html')[0];
+    html.style.fontSize = html.clientWidth / 3.75 + "px";
+  </script>
+<body>
+     <!-- Swiper -->
+  <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+          pagination: {
+            el: '.swiper-pagination',
+          },
+        });
+    var oList = document.getElementsByClassName("swiper-slide")[0];
+    var oList1 = document.getElementsByClassName("swiper-slide")[1];
+    var oList2 = document.getElementsByClassName("swiper-slide")[2];
+    axios.get("https://resources.ninghao.net/wxapp-case/db.json").then(function (response) {
+        function getNum(num,str){
+        for( j in response.data.slides[num]){
+            var h1 = document.createElement("h1");
+            h1.className = "h1";
+            h1.innerHTML = response.data.slides[num].header;
+
+            var op = document.createElement("p");
+            op.className = "op";
+            op.innerHTML = response.data.slides[num].sub_header.toUpperCase(); 
+
+            var op1 = document.createElement("p");
+            op1.className = "op1";
+            op1.innerHTML = response.data.slides[num].description;
+            str.innerHTML = response.data.slides[num][j];
+              if(j == "image"){
+                str.innerHTML = "<img class = 'qw1' src='"+ response.data.slides[num][j] +"'>"
+              }
+              str.appendChild(h1);
+              str.appendChild(op);
+              str.appendChild(op1);
+        }
+        }
+        getNum(0,oList);
+        getNum(1,oList1);
+        getNum(2,oList2);
+        console.log(response);
+    },function (error) {
+        console.log("错误信息:" + error)
+    });
+</script>

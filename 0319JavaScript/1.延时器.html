@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{width: 150px;height: 150px;border: 1px solid red;margin: 50px auto;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="change">改变</button>
+    <button class="clear">清除</button>
+</body>
+</html>
+<script>
+    //第一遍
+    // //获取元素
+    // var oBox = document.getElementsByClassName("box")[0];
+    // var oChange = document.getElementsByClassName("change")[0];
+    // var oClear = document.getElementsByClassName("clear")[0];
+    // //设置一个保存定时器的变量
+    // var timer = null;
+    // //设置定时器
+    // oChange.onclick = function(){
+    //     timer = setTimeout(function(){
+    //         oBox.style.background = "red";
+    //     },3000);
+    // };
+    
+    // //清除定时器
+    // oClear.onclick = function(){
+    //     clearTimeout(timer);
+    // }
+
+    //获取元素
+    var oBox = document.getElementsByClassName("box")[0];
+    var oChange = document.getElementsByClassName("change")[0];
+    var oClear = document.getElementsByClassName("clear")[0];
+    //设置一个保存定时器的变量
+    var timer = null;
+    //设置定时器
+    oChange.onclick = function(){
+        timer = setTimeout(function(){
+            oBox.style.background = "red";
+        },3000);
+    };
+    
+    //清除定时器
+    oClear.onclick = function(){
+        clearTimeout(timer);
+    }
+</script>

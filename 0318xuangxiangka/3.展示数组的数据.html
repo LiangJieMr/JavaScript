@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,ul,li,div,h3,p{margin: 0;padding: 0;}
+        .content{width: 500px;margin: 50px auto;border: 2px solid #cccccc; overflow: hidden;}
+        .content li{list-style: none;float: left;width: 50px;height: 50px;border: 1px solid red;margin: 20px 20px;text-align: center;line-height: 50px;}
+        .content li.inner{background: purple;}
+        div{width: 500px;margin: 0 auto;border: 1px solid red;}
+        h3{border-bottom: 1px solid red;padding-left: 20px;}
+        p{padding: 20px ;}
+    </style>
+</head>
+<body>
+    <ul class="content">
+        <li class="inner">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+    </ul>
+    <div>
+        <h3>显示第1天内容</h3>
+        <p>第一天</p>
+    </div>
+</body>
+</html>
+<script>
+     var oArray = [
+        "元旦：1月1日至3日放假三天。",
+        "春节：2月2日至8日放假7天。",
+        "妇女节：3月8日妇女节，与我无关。",
+        "清明节：4月3日至5日放假3天",
+        "劳动节：4月30日至5月2日放假3天。",
+        "端午节：6月4日至6日放假3天。",
+        "小暑：7月7日小暑。不放假。",
+        "七夕节：8月6日七夕节。不放假。",
+        "中秋节：9月10日至12日放假3天。",
+        "国庆节：10月1日至7日放假7天。",
+        "立冬：11月8日立冬。不放假。",
+        "艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"
+    ];
+
+    // 第一遍
+    // var aUl = document.getElementsByClassName("content")[0];
+    // var aLi = aUl.getElementsByTagName("li");
+    // var aH3 = document.getElementsByTagName("H3")[0];
+    // var aP = document.getElementsByTagName("p")[0];
+    // aP.innerHTML = oArray[0];
+    // for(var i = 0; i < aLi.length; i++){
+    //     aLi[i].index = i;
+    //     aLi[i].onclick = function(){
+    //         for(var i = 0; i < aLi.length; i++){
+    //             aLi[i].className = "";
+    //         }
+    //         this.className = "inner";
+    //         aH3.innerHTML = "显示第"+(this.index+1)+"的内容"
+    //         aP.innerHTML = oArray[this.index];
+    //     }
+    // }
+    //第二遍
+    // var aUl = document.getElementsByClassName("content")[0];
+    // var aLi = aUl.getElementsByTagName("li");
+    // var aH3 = document.getElementsByTagName("H3")[0];
+    // var aP = document.getElementsByTagName("p")[0];
+    // aP.innerHTML = oArray[0];
+    // for(var i = 0; i < aLi.length; i++){
+    //     aLi[i].index = i;
+    //     aLi[i].onclick = function(){
+    //         for(var i = 0; i < aLi.length; i++){
+    //             aLi[i].className = "";
+    //         }
+    //         this.className = "inner";
+    //         aH3.innerHTML = "显示第"+(this.index+1)+"的内容"
+    //         aP.innerHTML = oArray[this.index];
+    //     }
+    // }
+    // 第三遍
+    var aUl = document.getElementsByClassName("content")[0];
+    var aLi = aUl.getElementsByTagName("li");
+    var aH3 = document.getElementsByTagName("H3")[0];
+    var aP = document.getElementsByTagName("p")[0];
+    aP.innerHTML = oArray[0];
+    for(var i = 0; i < aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onclick = function(){
+            for(var i = 0; i < aLi.length; i++){
+                aLi[i].className = "";
+            }
+            this.className = "inner";
+            aH3.innerHTML = "显示第"+(this.index+1)+"的内容"
+            aP.innerHTML = oArray[this.index];
+        }
+    }
+
+</script>

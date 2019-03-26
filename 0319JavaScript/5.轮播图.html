@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,div,body,ul,li,ol,a,h3{margin: 0;padding: 0;}
+        .carousel{width: 672px;height: 350px;margin: 50px auto;position: relative;overflow: hidden;}
+        .carousel ul li{list-style: none;display: none;}
+        .carousel ul li.current{display: block;}
+        .carousel .blackmask{position: absolute; bottom: 30px; width: 100%;background: black; height: 60px; opacity: 0.6;filter:alpha(opacity=60);}
+        h3{color: white; position: absolute;bottom: 30px;height: 60px;line-height: 60px;}
+        .btns span{cursor: pointer; display: block;width: 55px;height: 55px;position: absolute;top: 130px;}
+        .btns .leftBtn{background: url(img/slide-btnL.png);left: 10px;}
+        .btns .rightBtn{background: url(img/slide-btnR.png);right: 10px;}
+        .circles{width: 180px;margin: 0 auto;}
+        .circles li{list-style: none; width: 20px;float: left; height: 20px;background: #ccc;border-radius: 10px;margin: 0 5px;}
+        .circles li.current{background: yellow;}
+    </style>
+</head>
+<body>
+    <div class="carousel" id="carousel">
+        <div class="imagesList" id="imagesList">
+            <ul>
+                <li class="current">
+                    <a href="">
+                        <img src="img/aaa.jpg" alt="" />
+                    </a>
+
+                    <div class="blackmask"></div>
+                    <h3>一周美图|谁的眼色撩人？高圆圆媚，汤唯暖，宋仲基帅炸</h3>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/bbb.jpg" alt="" />
+                    </a>
+
+                    <div class="blackmask"></div>
+                    <h3>男星中规中矩，女星小心机尽显！华</h3>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/ccc.jpg" alt="" />
+                    </a>
+
+                    <div class="blackmask"></div>
+                    <h3>8岁的小公主美美哒田亮为女儿范冰冰庆生晒礼物美照</h3>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/ddd.jpg" alt="" />
+                    </a>
+
+                    <div class="blackmask"></div>
+                    <h3>有爱心的女人最美！黄奕捐赠获澳夫人见证…</h3>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="img/eee.jpg" alt="" />
+                    </a>
+
+                    <div class="blackmask"></div>
+                    <h3>活泼搞怪不像妈！黄奕女儿森碟走秀呆萌可爱</h3>
+                </li>
+            </ul>
+        </div>
+        <div class="btns">
+            <span class="leftBtn" id="carousel_leftBtn"></span>
+            <span class="rightBtn" id="carousel_rightBtn"></span>
+        </div>
+        <div class="circles" id="circles">
+            <ol>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>    
+</body>
+</html>
+<script>
+    //第一遍
+    // //获取元素
+    // var aCarousel = document.getElementById("carousel");
+    // var aCircles = document.getElementById("circles");
+    // var aLi = aCircles.getElementsByTagName("li");
+    // var aImagesList = document.getElementById("imagesList");
+    // var aImgLi = aImagesList.getElementsByTagName("li");
+    // var aBtn = document.getElementById("carousel_leftBtn");
+    // var aBtn1 = document.getElementById("carousel_rightBtn");
+    // //初始化一个变量保存下标值
+    // var index = 0;
+    // //设置一个保存定时器的变量
+    // var timer = null;
+    // //设置小圆点点击事件
+    // for(var i = 0; i < aLi.length; i++){
+    //     aLi[i].index = i;
+    //     aLi[i].onmouseover = function(){
+    //         tab(this.index);
+    //     }
+    // }
+    // //设置按钮点击事件
+    // //左按钮
+    // aBtn.onclick = function(){
+    //     index--;
+    //     if(index < 0){
+    //         index = 4;
+    //     }
+    //     tab(index);
+    // }
+    // //右按钮
+    // aBtn1.onclick = function(){
+    //     index++;
+    //     if(index > 4){
+    //         index = 0;
+    //     }
+    //    tab(index);
+    // }
+    // //封装变化的图片原点
+    // function tab(index){
+    //     for(var i = 0; i < aLi.length; i++){
+    //             aLi[i].className = "";
+    //             aImgLi[i].className = "";
+    //         }
+    //         aLi[index].className = "current";
+    //         aImgLi[index].className = "current";
+    // }
+
+    // //设置一个定时器
+    // //封装定时器
+    // function move(){
+    //     index++;
+    //     if(index > 4){
+    //         index = 0;
+    //     }
+    //     tab(index);
+    // }
+    // timer = setInterval(move,1000);
+        
+    // //关闭定时器
+    // aCarousel.onmouseover = function(){
+    //     clearInterval(timer);
+    // }
+    // //开启定时器
+    // aCarousel.onmouseout = function(){
+    //     timer = setInterval(move,1000);
+    // }
+
+
+    //获取元素
+    var aCarousel = document.getElementById("carousel");
+    var aCircles = document.getElementById("circles");
+    var aLi = aCircles.getElementsByTagName("li");
+    var aImagesList = document.getElementById("imagesList");
+    var aImgLi = aImagesList.getElementsByTagName("li");
+    var aBtn = document.getElementById("carousel_leftBtn");
+    var aBtn1 = document.getElementById("carousel_rightBtn");
+    //初始化一个变量保存下标值
+    var index = 0;
+    //设置一个保存定时器的变量
+    var timer = null;
+    //设置小圆点点击事件
+    for(var i = 0; i < aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            tab(this.index);
+        }
+    }
+    //设置按钮点击事件
+    //左按钮
+    aBtn.onclick = function(){
+        index--;
+        if(index < 0){
+            index = 4;
+        }
+        tab(index);
+    }
+    //右按钮
+    aBtn1.onclick = function(){
+        index++;
+        if(index > 4){
+            index = 0;
+        }
+       tab(index);
+    }
+    //封装变化的图片原点
+    function tab(index){
+        for(var i = 0; i < aLi.length; i++){
+                aLi[i].className = "";
+                aImgLi[i].className = "";
+            }
+            aLi[index].className = "current";
+            aImgLi[index].className = "current";
+    }
+
+    //设置一个定时器
+    //封装定时器
+    function move(){
+        index++;
+        if(index > 4){
+            index = 0;
+        }
+        tab(index);
+    }
+    timer = setInterval(move,1000);
+        
+    //关闭定时器
+    aCarousel.onmouseover = function(){
+        clearInterval(timer);
+    }
+    //开启定时器
+    aCarousel.onmouseout = function(){
+        timer = setInterval(move,1000);
+    }
+</script>

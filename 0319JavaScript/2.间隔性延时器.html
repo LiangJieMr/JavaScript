@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{color: red;}
+    </style>
+</head>
+<body>
+    <button class="start">开始</button>
+    <button class="close">停止</button>
+    <p>resule: <span></span></p>
+</body>
+</html>
+<script>
+    //第一遍
+    // //获取元素
+    // var aStart = document.getElementsByClassName("start")[0];
+    // var aClose = document.getElementsByClassName("close")[0];
+    // var aSpan = document.getElementsByTagName("span")[0];
+    // //定义一个变量
+    // var num = 0;
+    // //定义一个变量，保存定时器；
+    // var timer = null;
+    // aStart.onclick = function () {
+    //     //设置间隔性定时器
+    //     timer = setInterval(function(){
+    //         num++;
+    //         aSpan.innerHTML = num;
+    //     },100)
+    // }
+    // //关闭定时器
+    // aClose.onclick = function () {
+    //     clearInterval(timer);
+    // }
+
+    //获取元素
+    var aStart = document.getElementsByClassName("start")[0];
+    var aClose = document.getElementsByClassName("close")[0];
+    var aSpan = document.getElementsByTagName("span")[0];
+    //定义一个变量
+    var num = 0;
+    //定义一个变量，保存定时器；
+    var timer = null;
+    aStart.onclick = function () {
+        //设置间隔性定时器
+        timer = setInterval(function(){
+            num++;
+            aSpan.innerHTML = num;
+        },100)
+    }
+    //关闭定时器
+    aClose.onclick = function () {
+        clearInterval(timer);
+    }
+
+
+</script>
