@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box3{width: 400px;height: 400px;background: red;margin: 100px auto;}
+        .box2{width: 200px;height: 200px;background: blue;}
+        .box1{width: 100px;height: 100px;background: yellow;}
+    
+    </style>
+</head>
+<body>
+    <div class="box3">
+        <div class="box2">
+            <div class="box1">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var box3 = document.getElementsByClassName("box3")[0];
+    var box2 = document.getElementsByClassName("box2")[0];
+    var box1 = document.getElementsByClassName("box1")[0];
+    box3.onclick = function(){
+        alert("我是div3");
+    }
+    box2.onclick = function(){
+        alert("我是div2");
+    }
+    box1.onclick = function(){
+        alert("我是div1");
+    }
+
+
+</script>

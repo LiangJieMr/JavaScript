@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+// 1.封装一个阻止事件冒泡函数
+    //兼容ie和高版本浏览器
+    function stopPro(evt){
+        var e = evt || window.event;
+        window.event ? e.cancelBubble = true : e.stopPropagation();
+    }
+
+// 2.封装一个获取非行间样式
+    function getStyle(element,attr){
+        if(window.getComputedStyle){
+            return window.getComputedStyle(element,false)[attr];
+        }else{
+            return element.currentStyle[attr];
+        }
+    }
+
+// 3.封装一个阻止元素的默认行为
+    function stopPrev(evt){
+        var e = evt || window.event;
+        window.event ? e.returnValue = false : e.preventDefault();
+    }
+
+//4.获取目标元素属性
+    function getTarget(evt){
+        var e = evt || window.event;
+        return e.target || e.srcElement;
+    }
+</script>
