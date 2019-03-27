@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数接收参数并弹出</title>
+    <script>
+        //封装一个函数
+        var myFn = function(a,b){
+            alert(a.value)
+            alert(b.value)
+        }
+        //当页面加载完成后执行
+        window.onload = function(){
+            var inp1 = document.getElementsByTagName("input")[0];
+            var inp2 = document.getElementsByTagName("input")[1];
+            var btn = document.getElementsByTagName("button")[0];
+            // 当点击btn时调用这个函数
+            btn.onclick = function(){
+                myFn(inp1,inp2)
+            }
+        }
+
+    
+    </script>
+</head>
+<body>
+    <input type="text" value="北京市">
+    <br>
+    <input type="text" value="朝阳区">
+    <br>
+    <button>传参</button>
+</body>
+</html>

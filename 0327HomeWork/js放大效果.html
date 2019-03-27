@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: rgb(67, 62, 73);
+        }
+
+        .wrap {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px auto;
+        }
+
+        .left {
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgb(100, 253, 240);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left img {
+            height: 400px;
+        }
+
+        .right {
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgb(100, 253, 240);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mask {
+            background: rgba(253, 191, 191, 0.459);
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .right img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left">
+            <img src="img/5.jpg" id="leftImg">
+            <div class="mask"></div>
+        </div>
+        <div class="right">
+            <img src="img/5.jpg" id="rightImg">
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        var leftImg = document.querySelector('#leftImg');//左边图片
+        var rightImg = document.querySelector('#rightImg');//右边图片
+        var mask = document.querySelector('.mask');//左边遮罩层
+        var right = document.querySelector('.right');//右边容器
+        var left = document.querySelector('.left');//左边容器
+        var leftWidth = getComputedStyle(left).width;
+        var leftHeight = getComputedStyle(left).height;
+        var ratio = getComputedStyle(rightImg).width / getComputedStyle(leftImg).width;//左右比值
+        var rightWidth = getComputedStyle(right).width;//右边容器宽度。计算用
+        var rightHeight = getComputedStyle(right).height;//右边容器高度。计算用
+        var r = rightWidth / ratio / 2;//遮罩层半径。调节位移值用
+        var x = 0;//x轴方向位移初始值
+        var y = 0;//y轴方向位移初始值
+        mask.style.width = rightWidth / ratio + 'px';//设置遮罩层的宽
+        mask.style.height = rightHeight / ratio + 'px';//设置遮罩层的高
+        left.onmouseover = function () {  //鼠标移入左侧显示遮罩层
+            mask.style.display = 'block';
+            // alert("fefe")
+        }
+        left.onmousemove = function (event) { //鼠标移动改变遮罩层位移值，右边图片位移值
+          var e = event || window.event;
+            x = e.clientX - left.offsetLeft;
+            y = e.clientY - left.offsetTop;
+            //过界处理
+            if (x < r) {
+                x = r;
+            } else if (x > leftWidth - r) {
+                x = leftWidth - r
+            }
+            if (y < r) {
+                y = r
+            } else if (y > leftHeight - r) {
+                y = leftHeight - r
+            }
+
+            mask.style.left = x - r + 'px';
+            mask.style.top = y - r + 'px';
+            rightImg.style.left = -(x - r) * ratio + 'px';
+            rightImg.style.top = -(y - r) * ratio + 'px';
+        }
+        left.onmouseout = function () { //鼠标移出左侧隐藏遮罩层
+            mask.style.display = 'none';
+        }
+    })();
+
+
+</script>

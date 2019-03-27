@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #inner{padding-top: 30px; text-align: center; color: white; width: 300px;height: 120px;margin: 50px auto;background: black; }
+    #inner span{color: white;padding: 10px;}
+    
+    </style>
+</head>
+<body>
+    <div id="inner">
+        <span>01</span>分钟<span>40</span>秒
+        <br>
+        <button class="">点击</button>
+    </div>
+</body>
+</html>
+<script>
+    var btn = document.getElementsByTagName("button")[0];
+
+    var span2 = document.getElementsByTagName("span")[1];
+    var span1 = document.getElementsByTagName("span")[0];
+    var timer = "";
+    // console.log(typeof span2.innerHTML)
+    btn.onclick = function(){
+        this.className == "" ? timer = setInterval(hour,500) : clearInterval(timer);
+        this.className = this.className == '' ? 'btn' : '';
+    }
+    function hour(){
+        var second = parseInt(span2.innerHTML);
+        if(second == 0){
+            second = 60;
+            span1.innerHTML = "00";
+        }
+        second--;
+        if(span1.innerHTML == 00 && second == 0){
+            clearInterval(timer);
+        }
+        span2.innerHTML = zero(second);
+    }
+    // timer = setInterval(hour,500)
+    //补零函数
+    function zero(n){
+        if(n < 10){
+            return "0" + n;
+        }else{
+            return n;
+        }
+    }
+</script>

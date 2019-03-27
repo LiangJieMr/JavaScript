@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #list{width: 300px;margin: 50px auto;}
+        #list button{margin: 0 5px;}
+        #content{width: 200px;height: 200px;background: black;margin: 0 auto;}
+    </style>
+</head>
+<body>
+    <div id="list">
+        <button>变宽</button>
+        <button>变高</button>
+        <button>变色</button>
+        <button>隐藏</button>
+        <button>重置</button>
+    </div>
+    <div id="content"></div>
+</body>
+</html>
+<script>
+    var btn = document.getElementsByTagName("button");
+    // console.log(cssText)
+    var content = document.getElementById("content");
+    var attr = ["width","height","background","display","display"]
+    var val = ["400px","400px","red","none","block"]
+    for(var i = 0; i < btn.length; i++){
+        btn[i].index = i;
+        btn[i].onclick = function(){
+            this.index == btn.length - 1 && (content.style.cssText = "");
+            changeStyle(content, attr[this.index], val[this.index])
+        }
+    }
+    var changeStyle = function (elem, attr, value){
+	    elem.style[attr] = value
+    };
+</script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,div,body,ul,li,span{margin: 0;padding: 0;}
+        ul{width: 200px;height: 35px;line-height: 35px;background: #eee;list-style: none;}
+        ul li{float: left;margin: 0 7px;}
+        ul li span{display: block;float: left;width: 20px;height: 20px;position: relative;top: 8px;cursor: pointer;}
+        #blue{background-color: blue;}
+        #red{background-color: red;}
+        #yellow{background-color: yellow;}
+        .content{width: 1400px;height: 500px;border: 2px solid blue;}
+        #footer{width: 100%;height: 35px;background: blue;margin-top: 20px;}
+    </style>
+    <script>
+        //设置cookie
+        function setCookie(name,value,expires){
+            //用一个变量保存键值对
+            var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+            //设置过期时间
+            if(expires instanceof Date){
+                cookieText += ";expires=" + expires;
+            }
+            document.cookie = cookieText;
+        }
+        //设置过期时间
+        function setCookieDay(day){
+            if(typeof day == "number" && day > 0){
+                var date = new Date;
+                date.setDate(date.getDate() + day);
+            }else{
+                throw new Error("传递的day必须是一个天数，必须比零大")
+            }
+        }
+        //获取cookie
+        function getCookie(name){
+            //userName = 
+            var cookieName = encodeURIComponent(name) + "=";
+            // 返回属性名的索引
+            var cookieStart = document.cookie.indexOf(cookieName);
+            // 用一个变量来保存cookie的值
+            var cookieValue = null;
+            //根据属性名查找cookie,如果大于0，那么这条cookie则存在，如果小于则表示不存在
+            if(cookieStart >= 0){
+                var cookieEnd = document.cookie.indexOf(";",cookieStart);
+                if(cookieEnd == -1){
+                    cookieEnd = document.cookie.length;
+                }
+                cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length,cookieEnd))
+                // console.log(cookieEnd,cookieValue)
+            }
+            return cookieValue;
+        }
+        //封装一个获取非行间样式的方法
+        function getStyle(element,attr){
+            if(window.getComputedStyle){
+                return window.getComputedStyle(element,false)[attr];
+            }else{
+                return element.currentStyle[attr]
+            }
+        }
+        window.onload = function(){
+            var oUl = document.getElementsByTagName("ul")[0];
+            //获取点击的颜色
+            var oSpan = oUl.getElementsByTagName("span");
+            var oContent = document.getElementsByClassName("content")[0];
+            var oFooter = document.getElementById("footer");
+            var current = null;
+            //用for循环遍历所有的颜色
+            for(var i = 0; i < oSpan.length; i++){
+                oSpan[i].index = i;
+                oSpan[i].onclick = function(){
+                    huan(this.index)
+                    console.log(this.index)
+                    setCookie("Hf",this.index,setCookieDay(2));
+                }
+            }
+            //封装点击事件
+            function huan(index){
+                var a  = getStyle(oSpan[index],"background-color");
+                oContent.style.border = "2px solid "+ a;
+                oFooter.style.backgroundColor = a;
+            }
+            current = getCookie("Hf")
+            if(current){
+                huan(current);
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <ul>
+        <li>选择风格</li>
+        <li><span id="blue"></span></li>
+        <li><span id="red"></span></li>
+        <li><span id="yellow"></span></li>
+    </ul>
+    <div class="content">
+        <span>换肤测试</span>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
