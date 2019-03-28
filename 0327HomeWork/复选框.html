@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #content {
+            width: 90px;
+            height: 300px;
+            margin: 10px auto;
+            background: #eee;
+        }
+        
+    </style>
+    <script>
+        window.onload = function () {
+            var oCbx = document.getElementsByClassName("cbx")
+            var one_cbx = document.getElementById("one_cbx");
+            var oA = document.getElementsByTagName("a")[0];
+            one_cbx.onclick = function () {
+                for (var i = 0; i < oCbx.length; i++) {
+                    if(one_cbx.checked == true){
+                        oCbx[i].checked = true;
+                    }else{
+                        
+                    }
+                }   
+                   
+            }
+            oA.onclick = function () {
+                for (var i = 0; i < oCbx.length; i++) {
+                    // console.log(oCbx[i])
+                    if(oCbx[i].checked == true){
+                        oCbx[i].checked = false;
+                    }else{
+                        oCbx[i].checked = true;
+                    }
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="content">
+        <p><input type="checkbox" id="one_cbx">全选<a href="javascript:">反选</a></p>
+        <input type="checkbox" class="cbx"><label for="">选项一</label>
+        <input type="checkbox" class="cbx"><label for="">选项二</label>
+        <input type="checkbox" class="cbx"><label for="">选项三</label>
+        <input type="checkbox" class="cbx"><label for="">选项四</label>
+        <input type="checkbox" class="cbx"><label for="">选项五</label>
+        <input type="checkbox" class="cbx"><label for="">选项六</label>
+        <input type="checkbox" class="cbx"><label for="">选项七</label>
+        <input type="checkbox" class="cbx"><label for="">选项八</label>
+        <input type="checkbox" class="cbx"><label for="">选项九</label>
+        <input type="checkbox" class="cbx"><label for="">选项十</label>
+    </div>
+</body>
+
+</html>

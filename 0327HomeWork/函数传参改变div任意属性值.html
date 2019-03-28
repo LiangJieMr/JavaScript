@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div,html,p,label{margin: 0;padding: 0;}
+        #big{width: 300px;height: 400px;margin: 10px auto;text-align: center;}
+        #inner{width: 200px;height: 200px;background: black;color: white;margin: 0 auto;}
+    </style>
+    <script>
+        function changeStyle(element,name,value){
+            element.style[name] = value;
+        }
+        window.onload = function(){
+            var inp = document.getElementsByTagName("input");
+            var btn = document.getElementsByTagName("button");
+            var inn = document.getElementById("inner");
+            btn[0].onclick = function(){
+                // console.log(inp[0].value)
+                // console.log(inp[1].value)
+                changeStyle(inn,inp[0].value,inp[1].value);
+            }
+            btn[1].onclick = function(){
+                //重置样式
+                inn.removeAttribute("style")
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="big">
+        <p><label for="">属性名:</label><input id="name" type="text"></p>
+        <p><label for="">属性值:</label><input id="value" type="text"></p>
+        <p><button>改变</button><button>重置</button></p>
+        <div id="inner">
+            请在上方输入属性名和属性值来改变此盒子
+        </div>
+    </div>
+</body>
+</html>
