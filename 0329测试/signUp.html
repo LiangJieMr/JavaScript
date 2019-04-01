@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/signUp.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div id="header">
+        <div id="cen">
+            <div class="logo">
+                <img src="img/logo1.png" alt="">
+            </div>
+            <div class="xinyong">
+                <p class="xin_one">信用商城</p>
+                <p class="xin_two">www.xysc.com</p>
+            </div>
+            <div class="huanying">
+                欢迎登陆
+            </div>
+            <!-- <div class="tell">
+                <p class="tell_one">客服热线:</p>
+                <p class="tell_two">400-639-6566</p>
+            </div> -->
+            <div class="YiYou">
+                <p>已有账号？<span>请登陆</span></p>
+            </div>
+        </div>
+    </div>
+    <!-- 身体 -->
+    <div id="content">
+        <div class="inner">
+            <p class="inner_p"><span class="p_one">个人用户注册</span><span class="shu"></span><span>企业用户注册</span></p>
+            <div class="banxin">
+                <div class="loa quan lod">1</div>
+                <div class="loa xian"><img src="img/jiazai.png" alt=""></div>
+                <div class="loa quan">2</div>
+                <div class="loa xian"><img src="img/jiazai.png" alt=""></div>
+                <div class="loa quan">3</div>
+                <div class="zi"><span class="se">验证手机号</span><span>填写账号信息</span><span>注册成功</span></div>
+                <div class="user_inp">
+                    <img id="u_img" src="img/tell.png" alt="">
+                    <input class="user_tell" id="inp" type="text" placeholder="手机号">
+                </div>
+                <div class="user_inp yzm">
+                    <input class="user_tell" id="inp" type="text" placeholder="请输入验证码">
+                </div>
+                <input type="button" id="btn" value="发送验证码">
+                <button id="btnn">下一步</button>
+            </div>
+            
+        
+        </div>
+    </div>
+
+    <!--尾部-->
+    <div class="footer">
+        <div class="footer_bottom">
+            <img src="img/logo3.png">
+            <ul>
+                <li class="bottomLi"><a href="#"> 售后保障</a></li>
+                <li class="bottom_li"><a href="#"> 退换货流程</a></li>
+                <li><a href="#">售后服务承诺及政策</a></li>
+            </ul>
+            <ul>
+                <li class="bottomLi"><a href="#"> 关于我们</a></li>
+                <li class="bottom_li"><a href="#"> 公司信息</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <dl>
+                <dt>扶贫认证</dt>
+                <dd>二维码</dd>
+            </dl>
+            <span><img src="img/erweima.png" /></span>
+            <p>版权所有：上海市社会信用促进中心 2017 沪 ICP 备：17053360 号</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var btn = document.getElementById("btnn");
+    var quan  = document.getElementsByClassName("quan");
+    var zi = document.getElementsByClassName("zi")[0];
+    var sp = zi.getElementsByTagName("span");
+    btn.onclick= function(){
+        // location.href = "loagin.html"
+        for(var i = 0; i < quan.length; i++){
+        quan[i].index = i;
+            for(var i = 0; i < quan.length; i++){
+                quan[i].className = "loa quan"
+                // sp[i].className = "";
+            }
+            quan[this.index].className = "loa quan lod"
+            // sp[this.index].className = "se"
+    }
+    }
+    
+
+</script>

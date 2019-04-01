@@ -1,0 +1,15 @@
+*{margin: 0px;padding: 0px;}
+/* 头部 */
+#header{width: 100%;height: 85px;background: #ffffff;}
+#header #cen{width: 1150px;height: 85px;margin: 0 auto;}
+#header #cen .logo{float: left; width: 42px; margin-top: 23px;}
+#header #cen .logo img{width: 100%;}
+#header #cen .xinyong{float: left; margin-top: 25px; width: 115px;height: 36px;color: #f1360b;margin-left: 8px;}
+#header #cen .xinyong .xin_one{font-size: 16px;}
+#header #cen .xinyong .xin_two{font-size: 12px;}
+#header #cen .huanying{margin-top: 30px; margin-left: 24px; float: left; width: 90px;height: 22px;font-size: 20px;}
+#header #cen .tell{margin-top: 26px;width: 110px;height: 34px;float: right;}
+#header #cen .tell .tell_one{font-size: 12px;}
+#header #cen .tell .tell_two{font-size: 12px;}
+#header #cen .YiYou{float: right; font-size: 12px;margin-top: 45px;}
+#header #cen .YiYou span{color: #f1360b;}
