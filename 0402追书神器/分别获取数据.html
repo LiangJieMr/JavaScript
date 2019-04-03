@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">获取所有分类</button>
+    <button id="btn2">获取排行榜类型</button>
+    <button id="btn3">获取排行版小说</button>
+    <button id="btn4">获取分类下小说类别</button>
+</body>
+</html>
+<script src="js/ajax.js"></script>
+<script>
+    var oBnt1 = document.getElementById("btn1");
+    var oBnt2 = document.getElementById("btn2");
+    var oBnt3 = document.getElementById("btn3");
+    var oBnt4 = document.getElementById("btn4");
+    oBnt1.onclick = function(){
+        ajax({
+            url : "http://api.zhuishushenqi.com/cats/lv2/statistics",
+            method : "get",
+            data : {},
+            success : function(response){
+                console.log(response)
+            },
+            async : true
+        })
+    }
+    oBnt2.onclick = function(){
+        ajax({
+            url : "http://api.zhuishushenqi.com/ranking/gender",
+            method : "get",
+            data : {},
+            success : function(response){
+                console.log(response)
+            },
+            async : true
+        })
+    }
+    oBnt3.onclick = function(){
+        ajax({
+            url : "http://api.zhuishushenqi.com/ranking/54d43437d47d13ff21cad58b",
+            method : "get",
+            data : {},
+            success : function(response){
+                console.log(response)
+            },
+            async : true
+        })
+    }
+    oBnt4.onclick = function(){
+        ajax({
+            url : "http://api.zhuishushenqi.com/cats/lv2",
+            method : "get",
+            data : {},
+            success : function(response){
+                console.log(response)
+            },
+            async : true
+        })
+    }
+</script>
