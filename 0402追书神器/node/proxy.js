@@ -6,11 +6,12 @@ var request = require("request");
 //创建主机名
 var hostName = "127.0.0.1";
 //创建端口号
-var port = 8888;
-
+var port = 8000;
+//地址
+var baseURL = "http://api.zhuishushenqi.com" ;
 //创建代理服务器
 var apiServer = http.createServer(function(req,res){
-    var url = "http://api.zhuishushenqi.com/cats/lv2/statistics";
+    var url = baseURL +  req.url;
     var options = {
         url : url
     };

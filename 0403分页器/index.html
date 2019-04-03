@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        a,
+        ul,
+        li,
+        img {
+            margin: 0;
+            padding: 0;
+        }
+
+        #page {
+            clear: both;
+            text-align: center;
+            width: 990px;
+            border: 1px solid #ccc;
+            padding: 20px 0 20px 20px;
+            margin: 50px auto;
+        }
+
+        #page span {
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        #page a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 0 10px;
+        }
+
+        #page a.active {
+            background: aqua;
+            color: #fff;
+            border-radius: 3px;
+        }
+
+        #list {
+            width: 990px;
+            margin: 20px auto;
+        }
+
+        #list ul {
+            padding: 5px;
+            float: left;
+            border: 1px solid red;
+            margin: 10px 8px;
+        }
+
+        #list ul li {
+            list-style: none;
+        }
+
+        #list ul li img {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="list">
+        <!-- <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li>name:法老王猎犬</li>
+            <li>engName:faffaf犬</li>
+            <li>price:2000-3000元</li>
+        </ul>
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li>name:法老王猎犬</li>
+            <li>engName:faffaf犬</li>
+            <li>price:2000-3000元</li>
+        </ul>
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li>name:法老王猎犬</li>
+            <li>engName:faffaf犬</li>
+            <li>price:2000-3000元</li>
+        </ul>
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li>name:法老王猎犬</li>
+            <li>engName:faffaf犬</li>
+            <li>price:2000-3000元</li> -->
+        </ul>
+    </div>
+
+    <div id="page">
+        <span id="prev">上一页</span>
+        <a class="active" href="javascript:;">1</a>
+        <a href="javascript:;">2</a>
+        <a href="javascript:;">3</a>
+        <a href="javascript:;">4</a>
+        <a href="javascript:;">5</a>
+        <a href="javascript:;">6</a>
+        <a href="javascript:;">7</a>
+        <a href="javascript:;">8</a>
+        <a href="javascript:;">9</a>
+        <a href="javascript:;">10</a>
+        <a href="javascript:;">11</a>
+        <a href="javascript:;">12</a>
+        <span id="next">下一页</span>
+    </div>
+</body>
+
+</html>
+<script src="js/ajax.js"></script>
+<script>
+    var page = document.getElementById("page");
+    var oA = page.getElementsByTagName("a");
+    ajax({
+        url: "https://api.apishop.net/common/dogFamily/queryDogList",
+        method: "get",
+        data: {
+            apiKey: "WnhkIrX57aa02034480209e83bb9de863f8ca9cedeac041",
+            page: 1,
+            pageSize: 10
+        },
+        success: function (response) {
+            var data = JSON.parse(response).result.petFamilyList;
+            for (var i = 0; i < data.length; i++) {
+                var ul = document.createElement("ul");
+                ul.innerHTML = "<li><img src=' " + data[i].coverURL + "' alt=''></li>"
+                "<li>name: " + data[i].name + "</li>"
+                "<li>engName: " + data[i].engName + " </li>"
+                "<li>price: " + data[i].price + " </li>";
+                document.getElementById("list").appendChild(ul);
+            }
+        },
+        async: true
+    })
+
+    for (var i = 0; i < oA.length; i++) {
+        oA[i].index = i;
+        oA[i].onclick = function () {
+            for (var i = 0; i < oA.length; i++) {
+                oA[i].className = ""
+            }
+            this.className = "active"
+            ajax({
+                url: "https://api.apishop.net/common/dogFamily/queryDogList",
+                method: "get",
+                data: {
+                    apiKey: "WnhkIrX57aa02034480209e83bb9de863f8ca9cedeac041",
+                    page: this.index + 1,
+                    pageSize: 10
+                },
+                success: function (response) {
+                    var data = JSON.parse(response).result.petFamilyList;
+                    for (var i = 0; i < data.length; i++) {
+                        var ul = document.createElement("ul");
+                        ul.innerHTML = "<li><img src=' " + data[i].coverURL + "' alt=''></li>"
+                        "<li>name: " + data[i].name + "</li>"
+                        "<li>engName: " + data[i].engName + " </li>"
+                        "<li>price: " + data[i].price + " </li>";
+                        document.getElementById("list").appendChild(ul);
+                    }
+                },
+                async: true
+            })
+        }
+    }
+
+</script>

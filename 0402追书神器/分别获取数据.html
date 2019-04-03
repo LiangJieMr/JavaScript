@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+   
 <body>
     <button id="btn1">获取所有分类</button>
     <button id="btn2">获取排行榜类型</button>
     <button id="btn3">获取排行版小说</button>
     <button id="btn4">获取分类下小说类别</button>
 </body>
+
 </html>
 <script src="js/ajax.js"></script>
 <script>
-    var oBnt1 = document.getElementById("btn1");
-    var oBnt2 = document.getElementById("btn2");
-    var oBnt3 = document.getElementById("btn3");
-    var oBnt4 = document.getElementById("btn4");
-    oBnt1.onclick = function(){
+    var oBtn1 = document.getElementById("btn1");
+    var oBtn2 = document.getElementById("btn2");
+    var oBtn3 = document.getElementById("btn3");
+    var oBtn4 = document.getElementById("btn4");
+    var baseURL = "http://127.0.0.1:8000";
+
+    function get(url, obj) {
         ajax({
-            url : "http://api.zhuishushenqi.com/cats/lv2/statistics",
-            method : "get",
-            data : {},
-            success : function(response){
-                console.log(response)
+            method: "get",
+            url: baseURL + url,
+            data: obj,
+            success: function (response) {
+                console.log(JSON.parse(response))
+                // 获取图片
+                // var aaa = JSON.parse(response);
+                // var div = document.createElement("div");
+                // div.innerHTML = "<img src= "+ aaa.cover + "alt=''>";
+                // document.body.appendChild(div);
             },
-            async : true
+            async: true
         })
     }
-    oBnt2.onclick = function(){
-        ajax({
-            url : "http://api.zhuishushenqi.com/ranking/gender",
-            method : "get",
-            data : {},
-            success : function(response){
-                console.log(response)
-            },
-            async : true
-        })
+
+    oBtn1.onclick = function () {
+        // get("/cats/lv2/statistics", {});
+        // get("/book/548d9c17eb0337ee6df738f5",{})
+        // get("/book?view=updated&id=585ba6acb234fe0713963750",{})
+        //获取搜索热词
+        // get("/book/search-hotwords",{})
+        //模糊搜索
+        // get("/fuzzy-search?query=%E6%96%97%E7%BD%97",{})
+        
+    };
+    oBtn2.onclick = function () {
+        get("/ranking/gender", {});
     }
-    oBnt3.onclick = function(){
-        ajax({
-            url : "http://api.zhuishushenqi.com/ranking/54d43437d47d13ff21cad58b",
-            method : "get",
-            data : {},
-            success : function(response){
-                console.log(response)
-            },
-            async : true
-        })
+
+    oBtn3.onclick = function () {
+        get("/ranking/54d43437d47d13ff21cad58b", {});
     }
-    oBnt4.onclick = function(){
-        ajax({
-            url : "http://api.zhuishushenqi.com/cats/lv2",
-            method : "get",
-            data : {},
-            success : function(response){
-                console.log(response)
-            },
-            async : true
-        })
+
+    oBtn4.onclick = function () {
+        get("/cats/lv2", {})
     }
+
 </script>

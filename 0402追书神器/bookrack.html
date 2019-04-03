@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>排行榜</title>
+    <title>书架</title>
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/iconfont1.css">
@@ -14,54 +14,47 @@
     <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
     <style>
-        body{background: #fff;overflow: auto;}
+        body {
+            background: #fff;
+        }
+
         .title {
             background: #26a2ff;
             font-weight: bold;
             color: #fff;
         }
+
         .bar {
             position: fixed;
             left: 0;
             bottom: 0;
         }
-        .icon-paixing:before {
+
+        .icon-shuji:before {
             color: #929292;
         }
-        #warp{
-            width: 100%;
-            padding: 2.2rem 0 2.2rem 0;
-        }
-        h3{width: 100%; background: #f9f0f0;padding-left: 1rem;margin: 0;}
-        ul{padding: 0px 1rem 0px 1rem}
-        ul li{list-style: none;line-height: 1.45rem;border-bottom: .01rem solid #eee;}
     </style>
 </head>
+
 <body>
     <!-- 标题栏 -->
     <header class="bar bar-nav">
-        <h1 class="title">排行</h1>
+        <h1 class="title">分类</h1>
     </header>
     <!-- 身体 -->
     <div id="warp">
-        <h3>男生</h3>
         <ul>
-            <!-- <li>哈哈</li>
-            <li>哈哈</li>
-            <li>哈哈</li>
-            <li>哈哈</li> -->
-        </ul>
-        <h3>女生</h3>
-        <ul>
-            <!-- <li>哈哈</li>
-            <li>哈哈</li>
-            <li>哈哈</li>
-            <li>哈哈</li> -->
+            <li>
+                <div id="img"></div>
+                <div id="inn">
+                    
+                </div>
+            </li>
         </ul>
     </div>
     <!-- 工具栏 -->
     <nav class="bar bar-tab">
-        <a class="tab-item external " href="#">
+        <a class="tab-item external active" href="#">
             <span class="icon iconfont icon-shuji"></span>
             <span class="tab-label">书架</span>
         </a>
@@ -69,10 +62,10 @@
             <span class="icon iconfont icon-fenlei"></span>
             <span class="tab-label">分类</span>
         </a>
-        <a class="tab-item external active" href="#">
+        <a class="tab-item external" href="#">
             <span class="icon iconfont icon-paixing"></span>
             <span class="tab-label">排行</span>
-        </a> 
+        </a>
         <a class="tab-item external" href="#">
             <span class="icon iconfont icon-search-1-copy"></span>
             <span class="tab-label">搜索</span>
@@ -81,36 +74,11 @@
 </body>
 
 </html>
-<script src="js/ajax.js"></script>
 <script>
-    var baseURL = "http://127.0.0.1:8000";
-    var aUl = document.getElementsByTagName("ul");
+
     var aa = document.getElementsByTagName("a")
-    ajax({
-        url : baseURL + "/ranking/gender",
-        method : "get",
-        data : {},
-        success : function(response){
-            console.log(JSON.parse(response))
-            var data = JSON.parse(response);
-            // 男生
-            for(var i = 0; i < data.male.length; i++){
-                var li = document.createElement("li");
-                li.innerHTML = data.male[i].title;
-                aUl[0].appendChild(li);
-            }
-            // 女生
-            for(var i = 0; i < data.female.length; i++){
-                var li = document.createElement("li");
-                li.innerHTML = data.female[i].title;
-                aUl[1].appendChild(li);
-            }
-        },
-        async : true
-    })
-    
      //点击a标签跳转
-    for(var i =0; i < aa.length; i++){
+     for(var i =0; i < aa.length; i++){
         aa[i].index = i;
         // console.log(this.index)
         aa[i].onclick = function(){
