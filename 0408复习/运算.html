@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="num1">
+    <select name="" id="se">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" id="num2">
+    =
+    <button id="btn">求值</button>
+    <strong id="result"></strong>
+</body>
+
+</html>
+<script>
+    var nn1 = document.getElementById("num1");
+    var nn2 = document.getElementById("num2");
+    var b = document.getElementById("btn");
+    var r = document.getElementById("result");
+    var s = document.getElementById("se");
+    var o = document.getElementsByTagName("option")
+    var va = null;
+    b.onclick = function(){
+        n1 = parseInt(nn1.value);
+        n2 = parseInt(nn2.value);
+        switch (s.value) {
+            case "+":
+                va = n1 + n2;
+                break;
+            case "-":
+                va = n1 - n2;
+                break;
+            case "*":
+                va = n1 * n2;
+                break;
+            case "/":
+                va = n1 / n2;
+                break;
+            }
+        r.innerHTML = va;
+    }
+    
+
+</script>

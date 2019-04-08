@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            background: url(img/chun.jpg) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <select name="" id="gh">
+            <option value="chun">春意绵绵</option>
+            <option value="xia">夏日炎炎</option>
+            <option value="qiu">秋声瑟瑟</option>
+            <option value="dong">冬雪皑皑</option>
+        </select>
+    </div>
+</body>
+
+</html>
+<script>
+    
+    var obox = document.getElementById("box");
+    var ogh = document.getElementById("gh");
+    gh.onchange = function () {
+        // alert(gh.value)
+        switch (gh.value) {
+            case "chun":
+                obox.style.background = "url(img/chun.jpg) no-repeat";
+                break;
+            case "xia":
+                obox.style.background = "url(img/xia.jpg) no-repeat";
+                break;
+            case "qiu":
+                obox.style.background = "url(img/qiu.jpg) no-repeat";
+                break;
+            case "dong":
+                obox.style.background = "url(img/dong.jpg) no-repeat";
+                break;
+        }
+    }
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <button>改变</button>
+    <img src="img/1.jpg" alt="">
+</body>
+</html>
+<script>
+    var num = document.getElementById("num");
+    var btn = document.getElementsByTagName("button")[0];
+    var img = document.getElementsByTagName("img")[0];
+
+    btn.onclick = function(){
+        img.src = "img/"+num.value+".jpg";
+    }
+</script>

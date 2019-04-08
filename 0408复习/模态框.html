@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div,span,h3{margin: 0px;padding: 0px;}
+        #nav{width: 100%;height: 35px;background: #eee;padding: 0 20px 0 20px;line-height: 35px;}
+        #count{background: #fff; display: none; width: 300px;height: 250px;margin: auto;position: absolute;left: 0;top: 0;right: 0;bottom: 0;z-index: 3;}
+        #count h3{height: 35px;width: 100%;background: #eee;text-align: center;}
+        #zhe{display: none; width: 100%;height: 100%;background: black;opacity: 0.3;position: absolute;left: 0;top: 0;z-index: 2;}
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <span id="login">登陆</span>
+    </div>
+    <div id="count">
+        <h3>哈哈哈</h3>
+        <div id="content">
+            <span id="close">关闭</span>
+        </div>
+    </div>
+    <div id="zhe"></div>
+</body>
+</html>
+<script>
+    var ologin = document.getElementById("login");
+    var ocount = document.getElementById("count");
+    var oclose = document.getElementById("close");
+    var zhe = document.getElementById("zhe");
+    ologin.onclick = function(){
+        ocount.style.display = "block";
+        zhe.style.display = "block";
+    }
+    oclose.onclick = function(){
+        ocount.style.display = "none";
+        zhe.style.display = "none";
+    }
+
+</script>

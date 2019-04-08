@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{width: 500px;height: 300px;margin: 100px auto;}
+        #box #im{width: 100%;height: 100%;}
+        #btn{width: 200px;margin: 0 auto;text-align: center;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="im" src="img/1.jpg" alt="">
+    </div>
+    <div id="btn">
+            <button><</button>
+            <button>></button>
+    </div>
+</body>
+</html>
+<script>
+    var oim = document.getElementById("im");
+    var obtn = document.getElementsByTagName("button");
+    var index = 1;
+    obtn[0].onclick = function(){
+        index--;
+        if(index < 1){
+            index = 4;
+        }
+        oim.src = "img/"+ index+".jpg";
+    }
+    obtn[1].onclick = function(){
+        index++;
+        if(index > 4){
+            index = 1;
+        }
+        oim.src = "img/"+ index+".jpg";
+    }
+
+    var a = 10,b=20;
+    a++;
+    ++a;
+    b--;
+    var c = --a+(b++)+(++b)+a++;
+    // 11   19  20    12
+    console.log(c)
+</script>
