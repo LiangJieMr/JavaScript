@@ -31,10 +31,11 @@
             data: obj,
             success: function (response) {
                 console.log(JSON.parse(response))
-                // 获取图片
-                // var aaa = JSON.parse(response);
+                // console.log(JSON.parse(response).male[0].bookCover[0])
+                // // 获取图片
+                // var aaa = JSON.parse(response).male[0].bookCover[0];
                 // var div = document.createElement("div");
-                // div.innerHTML = "<img src= "+ aaa.cover + "alt=''>";
+                // div.innerHTML = "<img src= "+ "http/"+aaa + "alt=''>";
                 // document.body.appendChild(div);
             },
             async: true
@@ -42,12 +43,12 @@
     }
 
     oBtn1.onclick = function () {
-        // get("/cats/lv2/statistics", {});
+        get("/cats/lv2/statistics", {});
         // get("/book/548d9c17eb0337ee6df738f5",{})
         // get("/book?view=updated&id=585ba6acb234fe0713963750",{})
-        //获取搜索热词
+        // 获取搜索热词
         // get("/book/search-hotwords",{})
-        //模糊搜索
+        // 模糊搜索
         // get("/fuzzy-search?query=%E6%96%97%E7%BD%97",{})
         
     };

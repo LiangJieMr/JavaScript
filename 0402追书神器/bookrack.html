@@ -33,6 +33,14 @@
         .icon-shuji:before {
             color: #929292;
         }
+        .btn{
+            display: block;
+            background:#26a2ff;
+            margin: 10rem auto;
+            color: #fff;
+            border: none;
+            outline: none;
+        }
     </style>
 </head>
 
@@ -52,6 +60,8 @@
             </li>
         </ul>
     </div>
+    <!-- 身体 -->
+    <button class="btn">添加小说</button>
     <!-- 工具栏 -->
     <nav class="bar bar-tab">
         <a class="tab-item external active" href="#">
@@ -77,6 +87,12 @@
 <script>
 
     var aa = document.getElementsByTagName("a")
+    var btn = document.getElementsByClassName("btn")[0];
+
+
+    btn.onclick = function(){
+        location.href = "classify.html"
+    }
      //点击a标签跳转
      for(var i =0; i < aa.length; i++){
         aa[i].index = i;
