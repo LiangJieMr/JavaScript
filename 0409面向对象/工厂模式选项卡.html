@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 580px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+
+        .tab ul {
+            list-style: none;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .tab ul li {
+            cursor: pointer;
+            text-align: center;
+            float: left;
+            width: 120px;
+            height: 35px;
+            line-height: 35px;
+            border-right: 1px solid #ccc;
+        }
+
+        .tab ul li.active {
+            background: coral;
+            color: #fff;
+        }
+
+        .conut {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .conut div {
+            height: 280px;
+            line-height: 280px;
+            text-align: center;
+            display: none;
+        }
+
+        .conut div.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab" id="tab">
+        <ul>
+            <li class="active">唱歌</li>
+            <li>跳舞</li>
+            <li>打游戏</li>
+        </ul>
+        <div class="conut" id="conut">
+            <div class="show">唱歌专栏</div>
+            <div>跳舞专栏</div>
+            <div>打游戏专栏</div>
+        </div>
+    </div>
+    <div class="tab" id="tab1">
+        <ul>
+            <li class="active">唱歌</li>
+            <li>跳舞</li>
+            <li>打游戏</li>
+        </ul>
+        <div class="conut" id="conut1">
+            <div class="show">唱歌专栏</div>
+            <div>跳舞专栏</div>
+            <div>打游戏专栏</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function tabe(name,name1) {
+        var tab = document.getElementById(name);
+        var oLi = tab.getElementsByTagName("li");
+        var oCount = document.getElementById(name1);
+        var oDiv = oCount.getElementsByTagName("div");
+        for (var i = 0; i < oLi.length; i++) {
+            oLi[i].index = i;
+            oLi[i].onclick = function () {
+                for (var i = 0; i < oLi.length; i++) {
+                    oLi[i].className = "";
+                    oDiv[i].className = "";
+                }
+                oLi[this.index].className = "active";
+                oDiv[this.index].className = "show";
+            }
+        }
+    }
+    tabe("tab","conut");
+    tabe("tab1","conut1");
+
+
+
+
+
+
+
+
+
+
+    // var tab1 = document.getElementById("tab1");
+    // var oLi1 = tab1.getElementsByTagName("li");
+    // var oCount1 = document.getElementById("conut1");
+    // var oDiv1 = oCount1.getElementsByTagName("div");
+    // for(var i =0; i < oLi.length; i++){
+    //     tabe(oLi,oDiv)
+    // }
+
+    // for(var i =0; i < oLi1.length; i++){
+    //     tabe(oLi1,oDiv1)
+    // }
+
+    // function tabe(attr1,attr2){
+    //     attr1[i].index = i;
+    //     attr1[i].onclick = function(){
+    //         for(var i = 0; i < attr1.length; i++){
+    //             attr1[i].className = "";
+    //             attr2[i].className = ""
+    //         }
+    //         this.className = "active";
+    //         attr2[this.index].className = "show"; 
+    //     }
+    // }
+</script>
