@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    function Box() {
+        this.name = "lee";
+    }
+    Box.prototype.name = "jack"
+    function Desk() {
+        this.age = 100;
+    }
+    Desk.prototype.age = 200;
+    Desk.prototype = new Box();
+    var desk = new Desk();
+    
+
+    function Table() {							//Table构造
+        this.level = 'AAAAA';
+    }
+
+    Table.prototype = new Desk();				//继续原型链继承
+
+    var table = new Table();
+
+</script>

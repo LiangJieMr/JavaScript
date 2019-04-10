@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 通过new来创建 -->
+    <script>
+        function Person(name,age){
+            alert(this);//弹出objct
+
+            this.name = name;
+            this.age = age;
+
+            this.showName = function(){
+                alert("姓名:"+this.name);
+            }
+            this.showAge = function(){
+                alert("年龄:"+this.age);
+            }
+             /**
+                * 假想返回了对象
+                * return this;
+                */
+        }
+        
+        //创建两个对象
+        var p1 = new Person("张三",200);//可以看到在外面new了在function里面就不用new了；在function里面new了，在外面就不用new了
+        var p2 = new Person("李四",100);
+
+        p1.showName();
+        p1.showAge();
+
+        // p2.showName();
+        // p2.showAge();
+        alert(p1.showName == p2.showName) //false
+        /* 是因为创建function()的时候其本质是通过new Function()来创建的，会诞生一个新的函数对象，
+    所以每个对象的方法是不一样的，这样就存在资源浪费的问题了 */
+    </script>
+</body>
+</html>

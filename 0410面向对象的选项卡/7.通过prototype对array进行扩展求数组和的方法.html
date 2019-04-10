@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            /**
+            * 对数组原型扩展一个求和的方法；
+            * 注意不能只加在某个数组对象上，那样的话只能在那个对象上适用。
+            */
+        Array.prototype.sum = function(){
+            var sum = 0;
+            for(var i = 0; i < this.length; i++){
+                sum += this[i];
+            }
+            return sum;
+        }
+        //通过new Array() 和 [] 创建数组完全是一样的效果。
+        var arr1 = new Array(1,2,3,4,5);
+        var arr2 = [1,2,3,4,5];
+
+        alert(arr1.sum());
+        alert(arr2.sum());
+        
+        alert(arr1.sum == arr2.sum); //true
+        alert(arr2.sum == Array.prototype.sum); //true
+    </script>
+</body>
+</html>

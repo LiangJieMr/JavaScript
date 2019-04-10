@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- 用工厂方式来构造对象：工厂，简单来说就是投入原料、加工、出厂。 -->
+    <!-- 通过构造函数来生成对象，将重复的代码提取到一个函数里面，避免像第一种方式写大量重复的代码。
+    这样我们在需要这个对象的时候，就可以简单地创建出来了 -->
+    <script>
+        //构造函数  工厂
+        function createPerson(name,age){
+            var person  = new Object();
+
+            //原料
+            person.name = name;
+            person.age = age;
+
+            //加工
+            person.showName = function(){
+                alert("姓名:"+this.name)
+                // console.log(this);
+            }
+            person.showAge = function(){
+                alert("年龄:"+this.age)
+            }
+
+            //出厂
+            return person;
+        }
+        //创建两个对象
+        var p1 =  createPerson("张三",200);
+        var p2 =  createPerson("李四",100);
+        //调用对象方法
+        p1.showName();
+        p1.showAge();
+
+        p2.showName();
+        p2.showAge();
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab {
+            width: 450px;
+            border: 1px solid red;
+            margin: 100px auto;
+        }
+
+        #tab ul {
+            list-style: none;
+            height: 35px;
+            overflow: hidden;
+            background: teal;
+        }
+
+        #tab ul li {
+            text-align: center;
+            cursor: pointer;
+            float: left;
+            line-height: 35px;
+            border-right: 1px solid #ccc;
+            width: 100px;
+        }
+
+        #tab ul li.active {
+            background: springgreen;
+            color: #fff;
+        }
+
+        #tab div {
+            height: 280px;
+            line-height: 280px;
+            text-align: center;
+            display: none;
+        }
+
+        #tab div.show {
+            display: block;
+        }
+
+
+
+
+
+
+
+        #tab1 {
+            width: 450px;
+            border: 1px solid red;
+            margin: 100px auto;
+        }
+
+        #tab1 ul {
+            list-style: none;
+            height: 35px;
+            overflow: hidden;
+            background: teal;
+        }
+
+        #tab1 ul li {
+            text-align: center;
+            cursor: pointer;
+            float: left;
+            line-height: 35px;
+            border-right: 1px solid #ccc;
+            width: 100px;
+        }
+
+        #tab1 ul li.active {
+            background: springgreen;
+            color: #fff;
+        }
+
+        #tab1 div {
+            height: 280px;
+            line-height: 280px;
+            text-align: center;
+            display: none;
+        }
+
+        #tab1 div.show {
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var tab1 = new Tab("tab");
+
+
+            var tab2 = new Tab("tab1")
+        }
+        function Tab(id) {
+            var tabBox = document.getElementById(id);
+            this.tabLi = tabBox.getElementsByTagName("li");
+            this.tabDiv = tabBox.getElementsByTagName("div");
+
+            for (var i = 0; i < this.tabLi.length; i++) {
+                this.tabLi[i].index = i;
+                var _this = this;
+                // alert(this)
+                this.tabLi[i].onclick = function () {
+                    _this.clickBtn(this);
+                };
+            }
+        }
+
+        Tab.prototype.clickBtn = function (btn) {
+            for (var i = 0; i < this.tabLi.length; i++) {
+                this.tabLi[i].className = "";
+                this.tabDiv[i].className = "";
+            }
+            btn.className = "active";
+            this.tabDiv[btn.index].className = "show";
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="tab">
+        <ul>
+            <li class="active">唱歌</li>
+            <li>跳舞</li>
+            <li>打游戏</li>
+        </ul>
+        <div class="show">唱歌专栏</div>
+        <div>跳舞专栏</div>
+        <div>打游戏专栏</div>
+    </div>
+    <div id="tab1">
+        <ul>
+            <li class="active">唱歌</li>
+            <li>跳舞</li>
+            <li>打游戏</li>
+        </ul>
+        <div class="show">唱歌专栏</div>
+        <div>跳舞专栏</div>
+        <div>打游戏专栏</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- 原型添加的方法不会有多个副本，不会浪费资源，所有的对象只有一套方法. 
+        至于为什么是用的一套方法呢,因为所有的方法都等于原型上的方法。 -->
+    <script>
+        // person构造函数：在JS中，构造函数其实就可以看成类，对某个对象的抽象定义。
+        //       * @param {Object} name
+        //       * @param {Object} age
+        function Person(name,age){
+            //属性:每个对象的属性各不相同
+            this.name = name;
+            this.age = age;
+        }
+        //在原型上添加方法这样创建的所有对象用的都是同一套方法
+        Person.prototype.showName = function(){
+            alert("姓名:"+this.name);
+        }
+        Person.prototype.showAge = function(){
+            alert("姓名:"+this.age);
+        }
+
+        // 创建两个对象
+        var p1 = new Person("张三",200);
+        var p2 = new Person("李四",100);
+
+       
+        alert(p1.showName == p2.showName)
+        //true 原型添加的方法不会有多个副本，不会浪费资源，所有的对象只有一套方法.
+        alert(p1.showName == Person.prototype.showName)
+        //true 至于为什么是用的一套方法呢,因为所有的方法都等于原型上的方法
+    </script>
+</body>
+</html>

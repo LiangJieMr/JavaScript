@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //new object 几乎是空白的需要自己添加属性方法
+        var person = new Object();
+        //为person添加属性
+        person.name = "张三";
+        person.age = 20;
+        //为person对象添加方法
+        person.showName = function(){
+            alert("姓名:"+this.name);
+        }
+        
+        person.showAge = function(){
+            alert("年龄:"+this.age);
+        }
+        
+        //调用方法
+        person.showName();
+        person.showAge();
+
+        //这种方式会产生大量重复代码
+    </script>
+</body>
+</html>

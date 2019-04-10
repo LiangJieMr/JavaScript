@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //定义一个全局函数
+    // function show(){
+    //     alert(this);
+    // }
+    //调用show
+    // show();
+
+
+
+    //为window定义一个show方法
+    // window.show = function(){
+    //     alert(this);
+    // }
+    // window.show();
+
+
+
+    //为其他对象添加方法
+    var arr = [1,2,3,4,5];
+    arr.show = function(){
+        alert(this);
+    }
+    arr.show()
+    //弹出 1，2，3，4，5
+</script>
