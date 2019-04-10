@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义电话本1
+        var phonebook = [
+            {name : "大宝",tell : "111111"},
+            {name : "二宝",tell : "222222"},
+            {name : "三宝",tell : "333333"},
+            {name : "四宝",tell : "444444"},
+        ]
+        //定义电话本2
+        var phonebook2 = [
+            {name : "大深",tell : "555555"},
+            {name : "大度",tell : "666666"},
+            {name : "大创",tell : "777777"},
+            {name : "大远",tell : "888888"},
+        ]
+        //查询电话
+        function getTell(oPhonebook,oName){
+            var tell = "";
+            for(var i = 0; i < oPhonebook.length; i++){
+                if( oPhonebook[i].name == oName){
+                    tell = oPhonebook[i].tell;
+                    break;
+                }
+            }
+            return tell;
+        }
+        //添加纪录
+        function addItem(oPhonebook,oName,oTell){
+            oPhonebook.push({name : oName,tell : oTell});
+        }
+        //删除记录
+        function removeItem(oPhonebook,oName){
+            var n;
+            for(var i = 0; i < oPhonebook.length; i++){
+                if(oPhonebook[i].name == oName){
+                    n = i;
+                    break;
+                }
+            }
+            if(n != undefined){
+                oPhonebook.splice(n,1);
+            }
+        }
+
+        //从电话1中查询二宝的电话
+        // var str = getTell(phonebook,"二宝");
+        // alert(str)
+        //在电话1中添加七宝的记录
+        // addItem(phonebook,"七宝","777777");
+        // var str = getTell(phonebook,"七宝");
+        // alert(str)
+        // 在电话1中删除二宝的记录
+        // removeItem(phonebook,"二宝");
+        // var str = getTell(phonebook,"二宝");
+        // alert(str)
+        //在电话2中查询大远的记录
+        var str = getTell(phonebook2,"大远");
+        alert(str)
+    </script>
+</body>
+</html>
