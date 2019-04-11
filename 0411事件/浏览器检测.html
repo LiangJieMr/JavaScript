@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+
+    function addEvent(obj, type, fn) {				//添加事件兼容
+        if (obj.addEventListener) {
+            obj.addEventListener(type, fn);
+        } else if (obj.attachEvent) {
+            obj.attachEvent('on' + type, fn);
+        }
+    }
+
+    addEvent(window,mousewheelevt,function (e) {
+        alert(getWD(e))
+    })
+
+    function getWD(e) {
+        var e = e || window.event;
+        if(e.wheelDelta){
+            return e.wheelDelta;
+        }else{
+            return -e.detail * 40;
+        }
+    }
+</script>

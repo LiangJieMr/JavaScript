@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <button>Clicks</button>
+</body>
+
+</html>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementsByTagName("button")[0];
+    //事件绑定
+    function addEvent(obj, type, fn) {
+        //高版本浏览器
+        if (obj.addEventListener) {
+            obj.addEventListener(type, fn);
+        } else {
+            //低版本浏览器
+            obj.attachEvent("on" + type, fn);
+        }
+    }
+
+
+    //删除事件绑定
+    function removeEvent(obj, type, fn) {
+        if (obj.removeEventListener) {
+            obj.removeEventListener(type, fn);
+        } else {
+            obj.detachEvent("on" + type, fn);
+        }
+    }
+
+    box.attachEvent("onclick",fn1);
+    function fn1(){
+        alert("111");
+    }
+    // box.attachEvent("onclick", function () {
+    //     box.style.background = "red";
+    // })
+    btn.onclick = function(){
+        box.detachEvent("onclick",fn1)
+    }
+    
+    // box.addEventListener("click", function () {
+    //     alert("2")
+    // })
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://www.baidu.com">百度</a>
+</body>
+</html>
+<script>
+    var oA = document.getElementsByTagName("a")[0];
+    //阻止元素的默认行为
+    function proDef(e){
+        var e = e || window.event;
+        if(e.preventDefault){
+            e.preventDefault();
+        }else{
+            e.returnValue = false;
+        }
+    }
+    //以下不行
+    // function proDef(evt){
+    //     var e = evt || window.event;
+    //     e = evt ? e.preventDefault() : e.returnValue = false;
+    // }
+
+
+    oA.onclick = function(e){
+        alert("111")
+        proDef(event);
+    }
+
+</script>

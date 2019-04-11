@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div,ul,li{margin: 0;padding: 0;}
+        #mean{display: none; width: 150px;border: 1px solid #ccc;border-bottom: none;position: absolute;left: 0;top: 0;}
+        #mean ul{list-style: none;}
+        #mean ul li{cursor: pointer;border-bottom: 1px solid #ccc;padding-left: 10px;}
+        #mean ul li:hover{background: #eee;}
+    </style>
+</head>
+<body>
+    <div id="mean">
+        <ul>
+            <li>查看网页源码</li>
+            <li>重新加载</li>
+            <li>另存为</li>
+            <li>翻译</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var mean = document.getElementById("mean");
+    var li = mean.getElementsByTagName("li");
+    var ul = mean.getElementsByTagName("ul")[0];
+    //阻止元素的默认行为
+    function proDef(e){
+        var e = e || window.event;
+        if(e.preventDefault){
+            e.preventDefault();
+        }else{
+            e.returnValue = false;
+        }
+    } 
+    //用事件委托写
+    function getTarget(e){
+        var e = e || window.event;
+        if(e.target){
+            return e.target;
+        }else{
+            return e.srcElement;
+        }
+    }
+    ul.onclick = function(e){
+        var elements = getTarget(event);
+        console.log(elements)
+        if(elements.nodeName.toLowerCase = "li"){
+            mean.style.display = "none";
+            alert("111");
+            stopPro(event)
+        }
+    }
+    // for(var i = 0; i < li.length; i++){
+    //     li[i].onclick = function(e){
+    //         mean.style.display = "none";
+    //         alert("111")
+    //         stopPro(event);
+    //     }
+    // }
+    //阻止事件冒泡
+    function stopPro(e){
+        var e = e || window.event;
+        if(e.stopProgatation){
+            e.stopProgatation();
+        }else{
+            e.cancelBubble = true;
+        }
+    }
+    document.oncontextmenu = function(e){
+        mean.style.display = "block";
+        var disX = e.clientX;
+        var disY = e.clientY;
+        mean.style.left = disX + "px";
+        mean.style.top = disY + "px";
+        proDef(event);
+    }
+    document.onclick = function(){
+        alert("2222")
+        mean.style.display = "none";
+    }
+</script>
