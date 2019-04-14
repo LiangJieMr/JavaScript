@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{height: 2000px;}
+        #box{display: none; width: 50px;height: 50px;text-align: center; cursor: pointer; background: #333;color: #fff;position: fixed;right: 50px;bottom: 100px;;font-size: 18px;}
+    </style>
+</head>
+<body>
+    <div id="box">返回顶部</div>
+</body>
+</html>
+<script>
+    var oBox = document.getElementById("box");
+    //滚动条方法
+     Scroll = {
+        getTop : function(){
+            return document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        },
+        setTop : function(value){
+             if(document.documentElement.scrollTop){
+                document.documentElement.scrollTop = value;
+             }else if(window.pageYOffset){
+                window.pageYOffset = value;
+             }else if(document.body.scrollTop){
+                document.body.scrollTop = value;
+             }
+        }
+    }
+
+    window.onscroll = function(){
+        console.log(Scroll.getTop())
+        if(Scroll.getTop() > 300){
+            oBox.style.display = "block";
+        }else{
+            oBox.style.display = "none";
+        }
+    }
+    
+
+    oBox.onclick = function(){
+        Scroll.setTop(0)
+    }
+</script>

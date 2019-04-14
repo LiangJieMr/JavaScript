@@ -13,6 +13,7 @@
     <button id="btn2">获取排行榜类型</button>
     <button id="btn3">获取排行版小说</button>
     <button id="btn4">获取分类下小说类别</button>
+    <button id="btn5">获取分类下小说列表</button>
 </body>
 
 </html>
@@ -22,6 +23,7 @@
     var oBtn2 = document.getElementById("btn2");
     var oBtn3 = document.getElementById("btn3");
     var oBtn4 = document.getElementById("btn4");
+    var oBtn5 = document.getElementById("btn5");
     var baseURL = "http://127.0.0.1:8000";
 
     function get(url, obj) {
@@ -62,6 +64,31 @@
 
     oBtn4.onclick = function () {
         get("/cats/lv2", {})
+    }
+    var a = localStorage.getItem("bookname");
+    var b = a.split("")
+    var c = "";
+    for(var i = 0; i < b.length; i++){
+        c += b[i];
+        if(b[i] == "<"){ 
+            break;
+        }
+    }
+    var d = c.substring(0,c.length-1)
+    console.log(d)
+    oBtn5.onclick = function () {
+        get("/book/by-categories", {
+            gender : "male",
+            type:"hot",
+            major : "玄幻",
+            minor:"",
+            start : 1,
+            limit : 20
+        })
+        // get("/book/by-categories",{gender:"male",type:"hot",major:"玄幻",minor:"",start:0,limit:20})
+        // get("/book/548d9c17eb0337ee6df738f5",{})
+        // get("/book",{view:"updated",id:"531169b3173bfacb4904ca67"})
+        // get("/book/by-categories",{gender:"male",type:"hot",major:"玄幻",minor:"",start:0,limit:20})
     }
 
 </script>

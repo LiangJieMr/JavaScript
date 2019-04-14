@@ -60,6 +60,7 @@
             width: 33%;
             text-align: center;
             font-weight: bold;
+            cursor: pointer;
         }
         ul li span{
             font-weight: normal;
@@ -209,6 +210,23 @@
                 li.appendChild(br);
                 li.appendChild(span);
             }
+            //事件委托Event对象提供了一个属性叫target，可以返回事件的目标节点
+            function getTarget(e){
+                var e = e || window.event;
+                if(e.target){
+                    return e.target;
+                }else{
+                    return e.srcElement;
+                }
+            }
+            var oUl = document.getElementsByTagName("ul")[0];
+            oUl.onmouseover = function(){
+                var elements = getTarget(event)
+                if(elements.nodeName.toLowerCase = "li"){
+                    // console.log(elements.innerText)
+                    localStorage.setItem("bookname",elements.innerHTML);
+                }
+            }
         },
         async : true
     })
@@ -228,15 +246,6 @@
            }
         }
     }
-    var oli = document.getElementsByTagName("li");
-    console.log(oli)
-    oli[0].onclick = function(){
-        console.log("eeee")
-    }
-    // for(var i = 0; i < oli.length; i++){
-    //     oli[0].onclick = function(){
-    //         console.log("qwe");
-    //     }
-    // }
+  
     
 </script>

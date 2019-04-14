@@ -1,0 +1,112 @@
+*{margin: 0;padding: 0}
+/* 头部 */
+#header{ width: 100%;height: 36px;background: url(../img/header_bg.png) repeat-x;background-size:contain; }
+#header #header_content{width: 1460px;height: 36px;line-height: 36px;margin: 0 auto;}
+#header #header_left{float: left; height: 36px;width: 110px;}
+#header #header_left #logo{width: 100%;height: 100%;}
+#header #header_right{float: right;width: 175px;line-height: 36px;}
+#header #header_right div{font-size: 14px; cursor: pointer; float: right;margin-left: 9px;}
+#header #header_right div img.arrow{position: relative;top: -3px;width: 10px;height: 5px;margin-right: 10px;}
+
+/* 身体 */
+#content{width: 100%;height: auto;overflow: hidden; background:rgb(226, 226, 226) url(../img/bg3.jpg) repeat-x;padding-bottom: 10px;}
+#content #content_inner{width: 1460px;height: auto;margin: 0 auto;}
+#content #content_inner #list{display: none; list-style: none;width: 118px;height: 123px;background: #fcf7e1;float: right;border: 1px solid #999;border-top: none;position: absolute;top: 36px;right:  207px;}
+#content #content_inner #list li{cursor: pointer; margin-left:6px; padding-left: 26px;  font-size: 12px; margin-top: 11px;background: url(../img/arrow3.gif) no-repeat;background-position: 3px 3px ; }
+#content #content_inner #list li:hover{color: red;}
+#content #con_biaoti{font-size: 14px; width: 794px;height: 45px;line-height: 45px; margin: 74px auto;background: #f8f8f8;border-radius: 10px;}
+#content #con_biaoti #con_list{list-style: none;height: 25px;}
+#content #con_biaoti #con_list li{cursor: pointer; height: 25px; float: left;width: 100px;margin: 0 29px;line-height: 25px;border-radius: 20px;margin-top: 11px;text-align: center;color: #333;}
+#content #con_biaoti #con_list li:hover{color: #fff;background: #484848;}
+#content #con_biaoti #con_list li#active{color: #fff;background: #484848;}
+#content #content_inner #faWen #faWen_left{float: left; font-size: 16px; width: 486px;height: auto;margin-right: 90px;}
+#content #content_inner #faWen #faWen_left .left_tit{height: 25px;line-height: 25px;background: #ddd;padding-left: 14px;border: 1px solid #ccc;}
+#content #content_inner #faWen #faWen_left .tit_box{width: 475px;height: auto;background: #fff;border: 1px solid #ccc;border-top: none;padding: 10px 0 0 10px;margin-bottom: 12px;}
+#content #content_inner #faWen #faWen_left .tit_box #tit_list{list-style: none;}
+#content #content_inner #faWen #faWen_left .tit_box #tit_list li{cursor: pointer; margin-bottom: 10px;padding-left: 30px;background: url(../img/arrow4.gif) no-repeat;background-position-y:5px; }
+#content #content_inner #faWen #faWen_right{float: left; width: 880px;height: auto;}
+#content #content_inner #faWen #faWen_right .faWen_list{width: 879px;height: 190px;background: #fff;border: 1px solid #ccc;border-top: none;margin-bottom: 12px;}
+#content #content_inner #faWen #faWen_right .faWen_list .faWen1{height: 25px;border: 1px solid #ccc;background: #ddd;padding: 0 20px;border-right:none;border-left: none; }
+#content #content_inner #faWen #faWen_right .faWen_list .faWen1 .faWen1_tit{float: left;line-height: 25px;}
+#content #content_inner #faWen #faWen_right .faWen_list .faWen1 .faWen1_time{float: right;line-height: 25px;}
+#content #content_inner #faWen #faWen_right .faWen_list .faWen1_content{width: 800px;height: auto;padding: 20px 40px;}
+/* 轮播图 */
+.carousel{clear: both; width: 100%;height: 200px;margin: 0px auto;position: relative;overflow: hidden;}
+.carousel img{width: 100%;}
+.carousel ul li{list-style: none;display: none;}
+.carousel ul li.current{display: block;}
+.carousel .blackmask{position: absolute; bottom: 0px; width: 100%;background: black; height: 40px; opacity: 0.6;filter:alpha(opacity=60);}
+#imagesList ul li img{height: 200px;}
+#miaoshu{color: white; position: absolute;bottom: 0px;height: 40px;line-height: 40px;padding-left: 20px;font-size: 16px;}
+.btns span{cursor: pointer; display: block;width: 55px;height: 55px;position: absolute;top: 130px;}
+.btns .leftBtn{background: url(img/slide-btnL.png);left: 10px;}
+.btns .rightBtn{background: url(img/slide-btnR.png);right: 10px;}
+.circles{width: 180px;margin: 0 auto;position: absolute;top: 174px;left: 695px;}
+.circles li{list-style: none; width: 13px;float: left; height: 13px;background: #ccc;border-radius: 10px;margin: 0 8px;}
+.circles li.current{background: yellow;}
+#content_bom{overflow: hidden; width: 1460px;height: auto;padding-top:23px; margin-top: 12px;background: #fff;}
+#content_bom ul{list-style: none;}
+#content_bom ul li{margin: 0 32px; width: 300px;height: 420px;float: left;text-align: center;font-size: 18px;}
+#content_bom ul li img{width: 100%;height: 90%;}
+/* 尾部 */
+#footer{display: none; width: 750px;height: auto;margin: 0 auto;text-align: center;font-size: 24px;font-family: 'Courier New', Courier, monospace;}
+#footer p{margin-top: 10px;}
+
+
+/* 弹框 */
+.tanKuang{display: none; border:1px solid #ccc; z-index:3;width: 500px;height: 298px;background: #fff;position: absolute;margin: auto;left: 0;top: 0;right: 0;bottom: 0;}
+.tanKuang .tan-top{text-align: center; width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #ccc;background: #dddddd;}
+.tanKuang .tan-top .fa{margin-left: 40px;}
+.tanKuang .tan-top .close{float: right;margin-right: 20px;cursor: pointer;}
+.tanKuang .tan-div{padding: 30px;}
+.tanKuang .tan-div p{margin-bottom: 20px;}
+.tanKuang .tan-div button{padding: 10px 30px;border-radius: 10px; background:#9ad257;border: none;color: white;margin-left: 50px;}
+#inp1{width: 250px;height: 80px;}
+
+/* 遮罩 */
+#mask{display: none; width: 100%;height: 2426px;background: #000;opacity: 0.3;position: absolute;top: 0;left: 0;z-index: 2;}
+
+/* 换肤 */
+
+#skin{display: none;z-index: 3; background: #fff;  width: 660px; height:320px; border:1px solid #ccc; margin: auto; position: absolute; left:0; top:0; bottom:0; right:0;}
+#skin h3{ background: url("img/login_header.png"); height:33px; border-bottom: 1px solid #ccc; line-height: 33px; font-size: 16px; text-align: center;}
+#skin h3 img{float: right; position: relative; top: 11px; right:15px; cursor: pointer;}
+#skin ul{ list-style-type: none; overflow: hidden; padding: 10px 0 0 20px;}
+#skin ul li{ cursor: pointer; width: 200px;height: 120px; margin: 10px 10px 0 0; background: red; float: left;}
+
+/* 登陆 */
+#loagin{display: none; border:1px solid #ccc; z-index:3;width: 500px;height: 298px;background: #fff;position: absolute;margin: auto;left: 0;top: 0;right: 0;bottom: 0;}
+#loagin .tan-top{text-align: center; width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #ccc;background: #dddddd;}
+#loagin .tan-top .fa{margin-left: 40px;}
+#loagin .tan-top .close{float: right;margin-right: 20px;cursor: pointer;}
+#loagin .tan-div{padding: 30px;}
+#loagin  p{margin-bottom: 20px;text-align: center;}
+#loagin  p input{height: 30px;width: 280px;}
+#loagin #loagin_btn{display: block;padding: 8px 30px;margin: 0 auto;border-radius: 5px;background: #79be3d;color: #fff;border: none;outline: none;cursor: pointer;}
+#loagin .zc{text-align: right;;font-size: 14px;padding-right: 20px;}
+#loagin .zc a{color: #333;text-decoration: none}
+#loagin .zh{margin-top: 50px;}
+
+/* 注册 */
+#registered{display: none; border:1px solid #ccc; z-index:3;width: 500px;height: 598px;background: #fff;position: absolute;margin: auto;left: 0;top: 0;right: 0;bottom: 0;}
+#registered .tan-top{text-align: center; width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #ccc;background: #dddddd;}
+#registered .tan-top .fa{margin-left: 40px;}
+#registered .tan-top .close{float: right;margin-right: 20px;cursor: pointer;}
+#registered .tan-div{padding: 30px;}
+#registered  p{margin-bottom: 20px;}
+#registered  p input{height: 30px;width: 280px;}
+#registered #reg_inn{width: 400px;height: auto;margin: 0 auto;text-align: left;}
+#registered #sel{height: 30px;width: 280px;}
+#registered  p .str{cursor: pointer; font-size: 12px;font-weight: normal;float: right;margin-right: 50px;}
+#registered #reg{display: block;padding: 10px 30px;border: none;border-radius: 5px;outline: none;color: #fff;background: #3eb794;margin-left: 150px;}
+/* 预加载 */
+#yujiazai{position: relative; display: none; position: relative; width: 1020px;height: 617px;border: 1px solid #ccc;position: absolute;margin: auto;left: 0;top: 1200px;right: 0;bottom: 0;background: #333;z-index: 3;}
+#yujiazai #yu{height: 50px;background: #fff;font-size: 24px;text-align: center;line-height: 50px;}
+#yujiazai #yu_con{padding: 30px;height: 510px;overflow: hidden;}
+#yujiazai #yu_con #tu{width: 100%;height: 100%;}
+#yujiazai #yu_con #next{position: absolute;top: 270px;right: 35px;}
+#yujiazai #clo{float: right;position: relative;top: 17px;right: 20px;}
+#jiaobiao{color: #fff;position: absolute;bottom: 30px;right: 40px;font-size: 16px;}
+
+
+

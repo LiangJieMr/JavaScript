@@ -15,7 +15,7 @@
 </head>
 <style>
     body {
-            background: #fff;
+            background: #eee;
         }
 
         .title {
@@ -31,12 +31,21 @@
         }
         #warp {
             width: 100%;
-            padding: 2.2rem 0 2.2rem 0;
+            padding: 2.2rem 0 0.2rem 0;
+            background: #fff;
         }
         p{margin-top: .2rem;margin-bottom: .2rem;padding-left: .8rem;}
         #warp .fenlei{
             border-bottom: 1px solid #eee;
         }
+        span{
+            margin: 0 5px 0 5px;
+        }
+        #content{clear: both; list-style: none;width: 95%;margin: 0 auto;padding: 0;}
+        #content li{overflow: hidden; clear: both; border-bottom: 1px solid #ccc;padding: .3rem 0;}
+        #content li div.content_left{margin-right: 1rem; float: left; height: 4rem;width: 3rem;}
+        #content li div.content_left img{width: 100%;height: 100%;}
+        #content li div.content_right{float: left;height: 4rem;width: 13rem;border: 1px solid red;}
 </style>
 <body>
     <!-- 标题栏 -->
@@ -62,6 +71,24 @@
             <span>全部</span> -->
         </p>
     </div>
+    <!-- 身体 -->
+    <ul id="content">
+        <li>
+            <div class="content_left">
+                <img src="img/book_img.png" alt="">
+            </div>
+            <div class="content_right">
+                <p class="bookName">武道巅峰</p>
+                <p class="author">作者</p>
+                <p class="content_con">哈哈哈哈哈哈啊哈哈哈</p>
+                <p></p>
+            </div>
+        </li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
     <!-- 工具栏 -->
     <nav class="bar bar-tab">
             <a class="tab-item external " href="#">
@@ -88,6 +115,20 @@
      var aa = document.getElementsByTagName("a");
      var fenle2 = document.getElementsByClassName("fenlei2")[0];
      var baseURL = "http://127.0.0.1:8000";
+     //数组去重
+     function removeDuplicatedItem(arr) {
+        for(var i = 0; i < arr.length-1; i++){
+            for(var j = i+1; j < arr.length; j++){
+                if(arr[i]==arr[j]){
+    
+                arr.splice(j,1);//console.log(arr[j]);
+                    j--;
+                }
+            }
+        }
+        return arr;
+     }
+ 
      //点击a标签跳转
     for(var i =0; i < aa.length; i++){
         aa[i].index = i;
@@ -104,11 +145,37 @@
            }
         }
     }
-    ajax({
-        url : baseURL + "https://api.zhuishushenqi.com/book/by-categories",
-        method : "get",
-        data : {
-            
+    var a = localStorage.getItem("bookname");
+    var b = a.split("")
+    var c = "";
+    for(var i = 0; i < b.length; i++){
+        c += b[i];
+        if(b[i] == "<"){ 
+            break;
         }
+    }
+    var d = c.substring(0,c.length-1)
+    ajax({
+        url : baseURL + "/book/by-categories",
+        method : "get",
+        data : {gender:"male",type:"hot",major:d,minor:"",start:0,limit:20},
+        success : function(response){
+            console.log(JSON.parse(response))
+            var qer = JSON.parse(response).books;
+            var sj = "";
+            var arr = [];
+            for(var i = 0; i < qer.length; i++){
+                 sj = qer[i].minorCate;
+                 arr.push(sj);
+            }
+            var arr1 = removeDuplicatedItem(arr);
+            console.log(arr1)
+            for(var w = 0; w < arr1.length; w++){
+                var aspan = document.createElement("span");
+                aspan.innerHTML = arr1[w];
+                fenle2.appendChild(aspan);
+            }
+        },
+        async : true
     })
 </script>

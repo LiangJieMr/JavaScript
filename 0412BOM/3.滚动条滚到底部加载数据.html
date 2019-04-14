@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>我是数据1</li>
+        <li>我是数据2</li>
+        <li>我是数据3</li>
+        <li>我是数据4</li>
+        <li>我是数据5</li>
+        <li>我是数据6</li>
+        <li>我是数据7</li>
+        <li>我是数据8</li>
+        <li>我是数据9</li>
+        <li>我是数据10</li>
+        <li>我是数据11</li>
+        <li>我是数据12</li>
+        <li>我是数据13</li>
+        <li>我是数据14</li>
+        <li>我是数据15</li>
+        <li>我是数据16</li>
+        <li>我是数据17</li>
+        <li>我是数据18</li>
+        <li>我是数据19</li>
+        <li>我是数据20</li>
+        <li>我是数据21</li>
+        <li>我是数据22</li>
+        <li>我是数据23</li>
+        <li>我是数据24</li>
+        <li>我是数据25</li>
+        <li>我是数据26</li>
+        <li>我是数据27</li>
+        <li>我是数据28</li>
+        <li>我是数据29</li>
+        <li>我是数据30</li>
+        <li>我是数据31</li>
+        <li>我是数据32</li>
+        <li>我是数据33</li>
+        <li>我是数据34</li>
+        <li>我是数据35</li>
+        <li>我是数据36</li>
+        <li>我是数据37</li>
+        <li>我是数据38</li>
+        <li>我是数据39</li>
+        <li>我是数据40</li>
+        <li>我是数据41</li>
+        <li>我是数据42</li>
+        <li>我是数据43</li>
+        <li>我是数据44</li>
+        <li>我是数据45</li>
+        <li>我是数据46</li>
+        <li>我是数据47</li>
+        <li>我是数据48</li>
+        <li>我是数据49</li>
+        <li>我是数据50</li>
+    </ul>
+</body>
+</html>
+<script>
+    var ul = document.getElementsByTagName("ul")[0];
+    //获取可视区域的高度和宽度
+    var view = {
+        getPortWidth : function(){
+            return document.documentElement.clientWidth || document.body.clientWidth;
+        },
+        getPortHeight : function(){
+            return document.documentElement.clientHeight || document.body.clientHeight;
+        }
+    }
+    //获取滚动条的高度/距离
+    var scroll = {
+        getTop : function(){
+            return document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        },
+        getLeft : function(){
+            return document.documentElement.scrollLeft || window.pageXOffset || document.body.scrollLeft;
+        },
+        getHeight : function(){
+            return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+
+        },
+        getWidth : function(){
+            return Math.max(document.body.scrollWidth, document.documentElement.scrollWidth);
+        }
+    }
+    //滚动条滚动的距离 1072
+    // console.log(scroll.getHeight())
+    //获取滚动条距页面顶部的距离 317
+    // console.log(Math.round(scroll.getTop()))
+    //获取可视区域的高度 754
+    // console.log(view.getPortHeight())
+    //可视区域的高度 + 滚动条据页面顶部的距离 1072
+    // console.log(scroll.getTop() + view.getPortHeight())
+    var count = 100;
+    var num = 0;
+    window.onscroll = function(){
+        // 当可视区域的高度 + 滚动条据页面顶部的距离 = 滚动条滚动的距离
+        if(view.getPortHeight() + Math.round(scroll.getTop()) >= scroll.getHeight()){
+            
+            if(num < 100){
+                num += 10;
+                for(var i = 0; i < 10; i++){
+                var li = document.createElement("li");
+                li.innerHTML = "我要好好学习"
+                ul.appendChild(li);
+             }
+            }
+           
+        }
+    }
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{width: 2000px;}
+    </style>
+</head>
+<body>
+    <p>hello</p>
+</body>
+</html>
+<script>
+    // var scroll = document.documentElement.scrollTop || Window.pageYOffset || document.body.scrollTop;
+    function ScrollTop(){
+        return document.documentElement.scrollTop || Window.pageYOffset || document.body.scrollTop;
+    }
+    function ScrollLeft(){
+        return document.documentElement.scrollLeft || Window.pageXOffset || document.body.scrollLeft;
+    }
+    window.onscroll = function(){
+        console.log(ScrollTop(),ScrollLeft())
+    }
+</script>
