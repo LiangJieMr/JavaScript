@@ -52,7 +52,7 @@ var num = 10;
 window.onscroll = function () {
     if(num <= count){
         if(scroll.getTop() + view.getPortHeight() >= scroll.getHeight()){
-            alert("延迟加载")
+            // alert("延迟加载")
             num = num +10;
             for(var i = 0;i<4;i++){
                 var li = document.createElement("li");
@@ -91,7 +91,7 @@ gimg[i].onclick = function(){
     yujiazai.style.display = "block";
     mask.style.display = "block";
     tu.src = yubg[this.index];
-    nnum.innerHTML = this.index;
+    nnum.innerHTML = this.index+1;
     }
 }
 // var ee = null;
@@ -158,19 +158,19 @@ function zero(n){
     }
 }
 //定义一个正则  空白
-var aInp = document.getElementById("inp");
+var aInpn = document.getElementById("inp");
 var aClose = document.getElementById("close");
 var faWen_right = document.getElementById("faWen_right");
-var aTex = document.getElementById("inp1");
+var aTexx = document.getElementById("inp1");
 var aBut = document.getElementsByTagName("button")[0];
 var aXing = document.getElementsByClassName("Xing")[0];
 var aXing1 = document.getElementsByClassName("Xing")[1];
 var faWen1_tit = document.getElementsByClassName("faWen1-tit")[0];
 var faWen1_time = document.getElementsByClassName("faWen1-time")[0];
-var reg = /./;
+var regg = /./;
 aBut.onclick = function(){
-    if(reg.test(aInp.value) && reg.test(aTex.value)){
-        aTan.style.display = "none";
+    if(regg.test(aInpn.value) && regg.test(aTexx.value)){
+        // aTan.style.display = "none";
          //获取输入的内容
         var faWen_list = document.createElement("div");
         var first = document.getElementsByClassName("faWen_list")[0];
@@ -184,8 +184,8 @@ aBut.onclick = function(){
         faWen1_tit.className="faWen1_tit";
         faWen1_time.className="faWen1_time";
         faWen1_content.className = "faWen1_content";
-        faWen1_tit.innerHTML = aInp.value;
-        faWen1_content.innerHTML = aTex.value;
+        faWen1_tit.innerHTML = aInpn.value;
+        faWen1_content.innerHTML = aTexx.value;
 
         //获取当前时间
         //创建一个时间对象
@@ -215,9 +215,10 @@ aBut.onclick = function(){
         faWen_list.appendChild(faWen1_content)
         faWen1.appendChild(faWen1_tit);
         faWen1.appendChild(faWen1_time);
-        aInp.value="";
-        aTex.value="";
+        aInpn.value="";
+        aTexx.value="";
         mask.style.display = "none";
+        aTan.style.display = "none";
         document.documentElement.style.overflowY = 'scroll'; 
     }else{
         aTan.style.display = "block";

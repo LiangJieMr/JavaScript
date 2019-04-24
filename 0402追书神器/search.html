@@ -15,6 +15,7 @@
     <style>
     body {
             background: #fff;
+            overflow: auto;
         }
         .bar-nav{
             background: #26a2ff;
@@ -35,6 +36,8 @@
             margin: 0 0.5rem;
             background: none;
         }
+        ul{width: 100%;height: auto;list-style: none;padding: 0;margin-top: 50px;}
+        ul li{border-bottom: 1px solid #ccc;padding-left: 30px;}
     </style>
 </head>
 <body>
@@ -48,6 +51,14 @@
                     </div>
                   </div>
         </header>
+    <!-- 身体-->
+    <div>
+        <ul>
+<!--            <li>1</li>-->
+<!--            <li>2</li>-->
+<!--            <li>3</li>-->
+        </ul>
+    </div>
     <!-- 工具栏 -->
     <nav class="bar bar-tab">
             <a class="tab-item external " href="#">
@@ -59,13 +70,78 @@
                 <span class="tab-label">分类</span>
             </a>
             <a class="tab-item external" href="#">
-                <span class="icon iconfont icon-paixing"></span>
-                <span class="tab-label">排行</span>
-            </a>
-            <a class="tab-item external  active" href="#">
-                <span class="icon iconfont icon-search-1-copy"></span>
-                <span class="tab-label">搜索</span>
-            </a>
+        <span class="icon iconfont icon-paixing"></span>
+        <span class="tab-label">排行</span>
+        </a>
+        <a class="tab-item external  active" href="#">
+            <span class="icon iconfont icon-search-1-copy"></span>
+            <span class="tab-label">搜索</span>
+        </a>
         </nav>
 </body>
 </html>
+<script src="js/ajax.js"></script>
+<script>
+    var bar = document.getElementsByClassName("bar-tab")[0];
+    var aa = bar.getElementsByTagName("a")
+    var baseURL = "http://127.0.0.1:8000";
+    var inp = document.getElementsByTagName("input")[0];
+    var oUl = document.getElementsByTagName("ul")[0];
+    var arr = [];
+    if(inp.value = null){
+        oUl.innerHTML = ""
+    }
+    inp.onkeyup = function(){
+        ajax({
+            url : baseURL + "/book/fuzzy-search?query=" + inp.value,
+            method : "get",
+            data : {},
+            success : function(response){
+                console.log(JSON.parse(response))
+                var sear = JSON.parse(response);
+                arr.push(sear)
+                console.log(arr.length)
+                for(i of arr) {
+                    var la = arr[arr.length - 1].books
+                }
+                console.log(la)
+                for(var i = 0; i < la.length; i++){
+                    var oLi = document.createElement("li");
+                    // if(inp.value == ""){
+                    //     alert("111")
+                    //     oUl.removeChild(oLi)
+                    // }else{
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML = la[i].title;
+                    // }
+                    var ee = document.getElementsByTagName("li");
+                    for(var i = 0; i < ee.length; i++){
+                        ee[i].onclick = function(){
+                            localStorage.setItem("search","54d42d92321052167dfb75e3")
+                            location.href = "search1.html"
+                        }
+                    }
+                }
+            },
+            async : true
+        })
+        console.log(inp.value)
+    }
+    //点击a标签跳转
+    for(var i =0; i < aa.length; i++){
+        aa[i].index = i;
+        // console.log(this.index)
+        aa[i].onclick = function(){
+            if(this.index == 0){
+                location.href = "bookrack.html"
+            }else if(this.index == 1){
+                location.href = "classify.html"
+            }else if(this.index == 2){
+                location.href = "ranking.html"
+            }else{
+                location.href = "search.html"
+            }
+        }
+    }
+
+</script>

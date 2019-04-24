@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/tool.js"></script>
+    <script src="js/base.js"></script>
+    <style>
+        body{width: 100%;height: 100%;}
+        .btn1{z-index: 2;position: absolute;left: 10px;}
+        .btn2{z-index: 2;position: absolute;left: 100px;}
+        #mask{ z-index: 1; background: #000;opacity: 0;position: absolute;top:0;left: 0;}
+    </style>
+</head>
+<body>
+    <button class="btn1">Clicks</button>
+    <button class="btn2">Clear</button>
+    <div id="mask"></div>
+</body>
+</html>
+<script>
+    window.onload = function(){
+        // console.log(getInner().width)
+        /**
+         * 显示遮罩层
+         */
+        // function showOverlay() {
+            // 遮罩层宽高分别为页面内容的宽高
+            $("#mask").css("height",getInner().height + "px");
+            // console.log(getStyle($("#mask").first(),"height"))
+            $("#mask").css("width",getInner().width + "px");
+            // console.log(getStyle($("#mask").first(),"width"))
+            // $('.overlay').show();
+        // }
+
+        $("button").eq(0).click(function() {
+            $("#mask").animate({
+                attr: "o",
+                start: 0,
+                target: 30,
+                t: 30,
+                type: 1
+            })
+        })
+        $("button").eq(1).click(function() {
+            $("#mask").animate({
+                attr: "o",
+                start: 30,
+                target: 0,
+                t: 30,
+                type: 1
+            })
+        })
+    }
+
+
+
+</script>

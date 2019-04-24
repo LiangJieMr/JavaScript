@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>内容</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/mui.min.css">
+    <style>
+        html,
+        body {
+            background-color: #efeff4;
+        }
+        p {
+            text-indent: 22px;
+        }
+        span.mui-icon {
+            font-size: 14px;
+            color: #007aff;
+            margin-left: -15px;
+            padding-right: 10px;
+        }
+        .mui-off-canvas-left {
+            color: #fff;
+        }
+        .title {
+            margin: 35px 15px 10px;
+        }
+        .title+.content {
+            margin: 10px 15px 35px;
+            color: #bbb;
+            text-indent: 1em;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        input {
+            color: #000;
+        }
+        .mui-content-padded p{
+            color: black;
+        }
+        .rg-title{
+            width: 100%;
+            overflow: hidden;
+            background: white;
+        }
+        .rg-title p{
+            color: black;
+            text-indent:10px;
+            margin-top: 10px;
+            font-size: 17px;
+            display: inline-block;
+        }
+        .xia{
+            font-size: 20px;
+            color: black;
+            float: right;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+        .mui-off-canvas-left, .mui-off-canvas-right{
+            background: white;
+        }
+        .zhangjie ul{
+            margin: 0;padding: 0;
+            font-size: 20px;
+            list-style-type: none;
+            color: black;
+        }
+        .zhangjie ul li{
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            line-height: 30px;
+            white-space: pre-wrap;
+        }
+        #left {
+            width: 1rem;
+            height: 1rem;
+            color: black;;
+        }
+        .pull-left{position: relative;top:12px;}
+        .mui-bar .mui-icon{
+            margin-top: -1px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+    <!--侧滑菜单部分-->
+    <aside id="offCanvasSide" class="mui-off-canvas-left">
+        <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="content">
+                    <div class="rg-title">
+                        <p class="rgoP"></p>
+                        <span class="xia">↓</span>
+                    </div>
+                    <div class="zhangjie">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!--主界面部分-->
+    <div class="mui-inner-wrap">
+        <header class="mui-bar mui-bar-nav">
+            <a onclick="location.href='javascript:history.go(-1)'" class="mui-action-back mui-icon"><</a>
+            <h1 class="mui-title"></h1>
+        </header>
+        <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="mui-content-padded" id="padded">
+                    <!--<p></p>-->
+                </div>
+            </div>
+        </div>
+        <div class="mui-off-canvas-backdrop"></div>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/mui.min.js"></script>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    mui.init();
+    //侧滑容器父节点
+    var offCanvasWrapper = mui('#offCanvasWrapper');
+    //主界面容器
+    var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+    //菜单容器
+    var offCanvasSide = document.getElementById("offCanvasSide");
+    //移动效果是否为整体移动
+    var moveTogether = false;
+    //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+    var classList = offCanvasWrapper[0].classList;
+    //变换侧滑动画移动效果；
+    mui('.mui-input-group').on('change', 'input', function() {
+        if (this.checked) {
+            offCanvasSide.classList.remove('mui-transitioning');
+            offCanvasSide.setAttribute('style', '');
+            classList.remove('mui-slide-in');
+            classList.remove('mui-scalable');
+            switch (this.value) {
+                case 'main-move':
+                    if (moveTogether) {
+                        //仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+                        offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+                    }
+                    break;
+                case 'main-move-scalable':
+                    if (moveTogether) {
+                        //仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+                        offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+                    }
+                    classList.add('mui-scalable');
+                    break;
+                case 'menu-move':
+                    classList.add('mui-slide-in');
+                    break;
+                case 'all-move':
+                    moveTogether = true;
+                    //整体滑动时，侧滑菜单在inner-wrap内
+                    offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+                    break;
+            }
+            offCanvasWrapper.offCanvas().refresh();
+        }
+    });
+    mui('#offCanvasSideScroll').scroll();
+    mui('#offCanvasContentScroll').scroll();
+    if (mui.os.plus && mui.os.ios) {
+        mui.plusReady(function() { //5+ iOS暂时无法屏蔽popGesture时传递touch事件，故该demo直接屏蔽popGesture功能
+            plus.webview.currentWebview().setStyle({
+                'popGesture': 'none'
+            });
+        });
+    }
+</script>
+<script type="text/javascript">
+    var left = document.getElementById("left");
+    // console.log(left)
+    function fn1(){
+        alert("111")
+    }
+    var muititle = document.getElementsByClassName("mui-title")[0];
+    var rgoP = document.getElementsByClassName("rgoP")[0];
+    muititle.innerHTML = localStorage.getItem("tit");
+    rgoP.innerHTML = localStorage.getItem("title") + "&nbsp;:&nbsp;目录";
+    var zhangjie = document.getElementsByClassName("zhangjie")[0];
+    var padded = document.getElementById("padded");
+    var gid = localStorage.getItem("id");
+    //获取小说正版源
+    ajax({
+        method : "get",
+        url : "http://127.0.0.1:8000/atoc?",
+        data:{
+            view:"summary",
+            book : gid
+        },
+        success : function(response){
+            console.log(JSON.parse(response))
+            var a = JSON.parse(response)
+            for(var i = 0; i < a.length; i++){
+                    localStorage.setItem("nid",a[0]._id)
+            }
+        },
+        async : true
+    })
+    var nid = localStorage.getItem("nid");
+    console.log(nid)
+    // var a = [];
+    ajax({
+        method : "get",
+        url : "http://127.0.0.1:8000/atoc/" + nid,
+            data:{
+            view:"chapters"
+        },
+        success : function (response){
+            console.log(JSON.parse(response));
+            var data = JSON.parse(response);
+            var data = JSON.parse(response);
+            var lk = data.chapters[0].link;
+            // var aa = lk.substring(7,lk.length-1)
+            // console.log(aa)
+            // con(data.chapters[0].link);
+            localStorage.setItem("ln",lk)
+            for(var i=0;i<data.chapters.length;i++){
+                // console.log(data.chapters[i].title);
+                var oul = document.createElement("ul");
+                oul.innerHTML="<li>"+ data.chapters[i].title +"</li>"
+                zhangjie.appendChild(oul);
+                var op = document.createElement("p");
+                padded.appendChild(op);
+                localStorage.setItem("link",data.chapters[i]);
+
+            }
+        },
+        async : true
+    })
+    // console.log(a[0])
+    var lin = localStorage.getItem("ln");
+    var arr = [];
+    	ajax({
+    		method : "get",
+    		url : "http://127.0.0.1:8011",
+    		data:{
+    			link: lin,
+                view : "chapters"
+    		},
+    		success : function (response){
+    			            console.log(JSON.parse(response));
+    			var data = JSON.parse(response).chapter;
+    						function sort(ele){
+    							for(var i=0;i<ele.length-1;i++){
+    								for(var j=0;j<ele.length-i-1;j++){
+    									if(ele[j.order] > ele[(j+1).order]){
+    										var temp = ele[j.order];
+    										ele[j.order] = ele[(j+1).order];
+    										ele[(j+1).order] = temp;
+    									}
+    								}
+    							}
+    						}
+    						sort(data.order);
+    						console.log(data)
+    			arr.push(data)
+    						console.log(data)
+    						console.log(arr);
+    						var compare = function (x, y) {//比较函数
+    						    if (x.order < y.order) {
+    						        return -1;
+    						    } else if (x.order > y.order) {
+    						        return 1;
+    						    } else {
+    						        return 0;
+    						    }
+    						}
+    						arr.sort(compare)
+    						console.log(arr.sort(compare));
+    						console.log(arr.join("").length);
+    						console.log(arr.length);
+    						var odiv = document.createElement("div");
+    						odiv.innerHTML = "<p style='text-align: center;font-size:20px;text-indent:0;'>"+ data.title +"</p><p>"+ data.cpContent +"</p>";
+    						padded.appendChild(odiv);
+
+    		},
+    		async : true,
+    	})
+</script>

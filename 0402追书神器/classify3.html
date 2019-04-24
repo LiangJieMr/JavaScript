@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/iconfont1.css">
+    <link rel="stylesheet" href="css/iconfont2.css">
+    <link rel="stylesheet" href="css/iconfont3.css">
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <style>
+        body {
+            background: #fff;
+            overflow: scroll;
+        }
+
+        .title {
+            background: #26a2ff;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #left {
+            width: 1rem;
+            height: 1rem;
+        }
+        hr{border-top: none;border-left: none;border-right: none;}
+        #content{clear: both;height: auto;padding-bottom: .5rem; list-style: none;width: 95%;margin: 47px auto;padding: 0;margin-bottom: 0;}
+        #content li{overflow: hidden; clear: both;padding: .3rem 0;}
+        #content li div.content_left{margin-right: 1rem; float: left; height: 4rem;width: 3rem;}
+        #content li div.content_left img{width: 100%;height: 100%;}
+        #content li div.content_right{float: left;height: 4rem;width: 13rem;}
+        #content li div.content_right p{line-height: 20px; color: #333; margin: 0; font-size: 12px;padding-left: 0;width: 13rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+        #content li div.content_right p.content_con{color: #929292;}
+        #content li div.content_right p.author{color: #929292;}
+        #content li div.content_right p.bookName{margin-top: 5px;}
+        #btn{width: 100%;margin: auto;text-align: center;margin-top: 10px;}
+        #btn button{width: 110px;height: 30px; font-size: 14px;background:#26a2ff; color: #fff;outline: none;border: none;border-radius: 2px;margin: 0 15px;}
+        #xinxi{width: 100%;overflow: hidden;}
+        #xinxi div{width: 33.3%;float: left;text-align: center;font-size: 12px;}
+        #xinxi div p{line-height: 20px;margin: 0;text-align: center;}
+        #xiaobiao{width: 100%;}
+        #xiaobiao span{color: #fff; background: cornflowerblue;font-size: 13px;padding: 5px 10px;margin-right:10px;}
+        #con{font-size: 13px;width: 100%;height: auto;margin-top: 10px;}
+        #con #con_n{width: 100%;height: auto;}
+    </style>
+</head>
+
+<body>
+    <!-- 标题栏 -->
+    <header class="bar bar-nav">
+        <a class="icon pull-left" href="javascript:history.go(-1)">
+            <img id="left" src="img/left.png" alt="">
+        </a>
+        <h1 class="title">武炼巅峰</h1>
+    </header>
+    <!-- 身体 -->
+    <ul id="content">
+        <!-- <li> -->
+        <!-- <div class="content_left">
+                    <img src="img/book_img.png" alt="">
+                </div>
+                <div class="content_right">
+                    <p class="bookName">武道巅峰</p>
+                    <p class="author">作者</p>
+                    <p class="content_con">哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈啊哈哈哈</p>
+                    <p class="renqi">人气</p>
+                </div> -->
+        <!-- </li> -->
+    </ul>
+    <div id="btn">
+        <button type="button" value="追更新" id="tianjia">追更新</button>
+        <button id="start">开始阅读</button>
+    </div>
+    <hr>
+    <div id="xinxi">
+        <!-- <div>
+            <p>追书人气</p>
+            <p>32222</p>
+        </div>
+        <div>
+            <p>追书人气</p>
+            <p>32222</p>
+        </div>
+        <div>
+            <p>追书人气</p>
+            <p>32222</p> 
+        </div> -->
+    </div>
+    <hr>
+    <div id="xiaobiao">
+        <!-- <span>热邪</span>
+        <span>热邪</span>
+        <span>热邪</span>
+        <span>热邪</span>
+        <span>热邪</span>
+        <span>热邪</span>
+        <span>热邪</span>
+        <span>热邪</span> -->
+    </div>
+    <hr>
+    <div id="con">
+        <div id="con_n"></div>
+    </div>
+</body>
+
+</html>
+<script src="js/ajax.js"></script>
+<script>
+    var content = document.getElementById("content");
+    var xinxi = document.getElementById("xinxi");
+    var xiaobiao = document.getElementById("xiaobiao")
+    var con = document.getElementById("con");
+    var start = document.getElementById("start")
+    var baseURL = "http://127.0.0.1:8000";
+    var base = localStorage.getItem("id");
+    ajax({
+        url : baseURL + "/book/" + base,
+        method : "get",
+        data : {},
+        success : function(response){
+            console.log(JSON.parse(response))
+            var qer = JSON.parse(response);
+            console.log(qer)
+                 var li1 = document.createElement("li");
+                 content.appendChild(li1);
+                 var div1 = document.createElement("div");
+                 li1.appendChild(div1);
+                 div1.className = "content_left";
+                 var img1 = document.createElement("img");
+                 div1.appendChild(img1);
+                 img1.src = "img/book_img.png";
+                 var div2 = document.createElement("div");
+                 li1.appendChild(div2);
+                 div2.className = "content_right";
+                 var p1 = document.createElement("p");
+                 div2.appendChild(p1);
+                 p1.className = "bookName";
+                 p1.innerHTML = qer.title;
+                 localStorage.setItem("tit",qer.title)
+                 var p2 = document.createElement("p");
+                 div2.appendChild(p2);
+                 p2.className = "author";
+                 p2.innerHTML = qer.author;
+                 var p3 = document.createElement("p");
+                 div2.appendChild(p3);
+                 p3.className = "content_con";
+                 p3.innerHTML = qer.minorCate;
+
+
+                 var div01 = document.createElement("div");
+                 xinxi.appendChild(div01);
+                 var p11 = document.createElement("p");
+                 div01.appendChild(p11);
+                 p11.innerHTML = "追书人气"
+                 var p12 = document.createElement("p");
+                 div01.appendChild(p12);
+                 p12.innerHTML = qer.latelyFollower;
+                 var div02 = document.createElement("div");
+                 xinxi.appendChild(div02);
+                 var p21  = document.createElement("p");
+                 div02.appendChild(p21);
+                 p21.innerHTML = "读者留存率"
+                 var p22 = document.createElement("p");
+                 div02.appendChild(p22);
+                 p22.innerHTML = qer.retentionRatio +"%";
+                 var div03 = document.createElement("div");
+                 xinxi.appendChild(div03);
+                 var p31 = document.createElement("p");
+                 div03.appendChild(p31);
+                 p31.innerHTML = "日更新字数"
+                 var p32 = document.createElement("p");
+                 div03.appendChild(p32)
+                 p32.innerHTML = qer.postCount;
+
+                 var qerr = JSON.parse(response).tags;
+                 console.log(qerr)
+                 for(var i = 0; i < qerr.length; i++){
+                    var xiao = document.createElement("span");
+                    xiao.innerHTML = qerr[i];
+                    xiaobiao.appendChild(xiao);
+                 }
+                 var las = document.createElement("span");
+                 las.innerHTML = qer.minorCate;
+                 xiaobiao.appendChild(las);
+
+                 var con_n = document.createElement("div");
+                 con_n.innerHTML = qer.longIntro;
+                 con.appendChild(con_n);
+        },
+        async : true
+    })
+    var array = [];
+    // var obj = {};
+    var tianjia = document.getElementById("tianjia");
+    tianjia.onclick = function(){
+        //保留数据
+        if(localStorage.getItem("array")){
+            array= JSON.parse(localStorage.getItem("array"))
+        }
+        // localStorage.setItem("BOOK")
+        array.push(base)
+        // console.log(array)
+        localStorage.setItem("array",JSON.stringify(array));
+        // localStorage.setItem("array",aa);
+        // localStorage.setItem("book",array)
+        alert("已添加到书架");
+    }
+    start.onclick = function(){
+        location.href = "content.html"
+    }
+</script>

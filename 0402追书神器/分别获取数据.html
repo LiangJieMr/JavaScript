@@ -14,6 +14,13 @@
     <button id="btn3">获取排行版小说</button>
     <button id="btn4">获取分类下小说类别</button>
     <button id="btn5">获取分类下小说列表</button>
+    <button id="btn6">获取小说内容</button>
+    <button id="btn7">获取小说正版源</button>
+    <button id="btn8">获取小说正信息</button>
+    <button id="btn9">搜索自动补充</button>
+    <button id="btn10">模糊搜索</button>
+    <button id="btn11">搜索热词</button>
+    <button id="btn12">获取小说章节</button>
 </body>
 
 </html>
@@ -24,21 +31,34 @@
     var oBtn3 = document.getElementById("btn3");
     var oBtn4 = document.getElementById("btn4");
     var oBtn5 = document.getElementById("btn5");
+    var oBtn6 = document.getElementById("btn6");
+    var oBtn7 = document.getElementById("btn7");
+    var oBtn8 = document.getElementById("btn8");
+    var oBtn9 = document.getElementById("btn9");
+    var oBtn10 = document.getElementById("btn10");
+    var oBtn11 = document.getElementById("btn11");
+    var oBtn12 = document.getElementById("btn12");
     var baseURL = "http://127.0.0.1:8000";
+    var ba = "http://127.0.0.1:8011"
 
     function get(url, obj) {
         ajax({
             method: "get",
-            url: baseURL + url,
+            url:  baseURL+ url,
             data: obj,
             success: function (response) {
                 console.log(JSON.parse(response))
-                // console.log(JSON.parse(response).male[0].bookCover[0])
-                // // 获取图片
-                // var aaa = JSON.parse(response).male[0].bookCover[0];
-                // var div = document.createElement("div");
-                // div.innerHTML = "<img src= "+ "http/"+aaa + "alt=''>";
-                // document.body.appendChild(div);
+            },
+            async: true
+        })
+    }
+    function gets(url, obj) {
+        ajax({
+            method: "get",
+            url:  ba+ url,
+            data: obj,
+            success: function (response) {
+                console.log(JSON.parse(response))
             },
             async: true
         })
@@ -47,7 +67,7 @@
     oBtn1.onclick = function () {
         get("/cats/lv2/statistics", {});
         // get("/book/548d9c17eb0337ee6df738f5",{})
-        // get("/book?view=updated&id=585ba6acb234fe0713963750",{})
+        // get("/book?view=updated&id=531169b3173bfacb4904ca67",{})
         // 获取搜索热词
         // get("/book/search-hotwords",{})
         // 模糊搜索
@@ -59,36 +79,98 @@
     }
 
     oBtn3.onclick = function () {
-        get("/ranking/54d43437d47d13ff21cad58b", {});
+        get("/ranking/54d430e9a8cb149d07282496", {});
     }
 
     oBtn4.onclick = function () {
         get("/cats/lv2", {})
     }
     var a = localStorage.getItem("bookname");
-    var b = a.split("")
+    // var b = a.split("")
     var c = "";
-    for(var i = 0; i < b.length; i++){
-        c += b[i];
-        if(b[i] == "<"){ 
-            break;
-        }
-    }
+    // for(var i = 0; i < b.length; i++){
+    //     c += b[i];
+    //     if(b[i] == "<"){
+    //         break;
+    //     }
+    // }
     var d = c.substring(0,c.length-1)
     console.log(d)
     oBtn5.onclick = function () {
         get("/book/by-categories", {
             gender : "male",
             type:"hot",
-            major : "玄幻",
+            major : d,
             minor:"",
             start : 1,
             limit : 20
         })
+        //获取小说章节
+        // get("/mix-atoc/50bff3ec209793513100001c?view=chapters",{})
+            //获取小说信息
+            // get("/book/548d9c17eb0337ee6df738f5",{})
         // get("/book/by-categories",{gender:"male",type:"hot",major:"玄幻",minor:"",start:0,limit:20})
         // get("/book/548d9c17eb0337ee6df738f5",{})
         // get("/book",{view:"updated",id:"531169b3173bfacb4904ca67"})
         // get("/book/by-categories",{gender:"male",type:"hot",major:"玄幻",minor:"",start:0,limit:20})
     }
-
+    oBtn6.onclick = function () {
+        ajax({
+            method: "get",
+            url: "http://127.0.0.1:8011" ,
+            data: {
+                link:"http://vip.zhuishushenqi.com/chapter/5a4b52239303381c02a4bfa1?cv=1553072056189",
+                view:"chapters"
+            },
+            success: function (response) {
+                console.log(JSON.parse(response).chapter.cpContent)
+            },
+            async: true
+        })
+        // alert("111");
+        // gets("/atoc/",
+        //     {link : "568fef99adb27bfb4b3a58dc",view:"chapters"})
+        // get("5817f1161bb2ca566b0a5973?cv=1481275033588",
+        //     // { _id : "568fef99adb27bfb4b3a58dc",
+        //     //     link : "http://vip.zhuishushenqi.com/chapter/568fef9dadb27bfb4b3a58e3?",
+        //     //     view : "summary",
+        //     //     book : "548d9c17eb0337ee6df738f5"
+        //     {});
+    }
+    oBtn7.onclick = function(){
+        get("/atoc?",
+            {view:"summary",
+                book:"5a1bb4ac15c7e0ab453679f3"})
+        // ajax({
+        //     method: "get",
+        //     url: "http://127.0.0.1:8000/atoc/568fef99adb27bfb4b3a58dc" ,
+        //     data: {
+        //         // link:"http://vip.zhuishushenqi.com/chapter/5c517679fa53e030fc1f464b?cv=1548842617875",
+        //         view:"chapters"
+        //     },
+        //     success: function (response) {
+        //         console.log(JSON.parse(response))
+        //     },
+        //     async: true
+        // })
+    }
+    oBtn8.onclick = function () {
+        get("/book/548d9c17eb0337ee6df738f5", {})
+    }
+    //搜索自动补充
+    oBtn9.onclick = function () {
+        get("/book/auto-complete?query=%E6%96%97%E7%BD%97", {})
+    }
+    //模糊搜索
+    oBtn10.onclick = function () {
+        get("/book/fuzzy-search?query=%E6%96%97%E7%BD%97", {})
+    }
+    //搜索热词
+    oBtn11.onclick = function () {
+        get("/book/search-hotword", {})
+    }
+    oBtn12.onclick = function () {
+        // get("/atoc", {view : "chapters",sourceId : "568fef99adb27bfb4b3a58dc"})
+        get("/mix-atoc/50bff3ec209793513100001c",{ view : "chapters"})
+    }
 </script>

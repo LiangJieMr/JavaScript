@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/iconfont1.css">
+    <link rel="stylesheet" href="css/iconfont2.css">
+    <link rel="stylesheet" href="css/iconfont3.css">
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <style>
+         body {
+            background: #fff;
+            overflow: scroll;
+        }
+
+        .title {
+            background: #26a2ff;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #left {
+            width: 1rem;
+            height: 1rem;
+        }
+        .content1{clear: both;height: auto;padding-bottom: .5rem; list-style: none;width: 95%;margin: 47px auto;padding: 0;}
+        .content1 li{overflow: hidden; clear: both; border-bottom: 1px solid #ccc;padding: .3rem 0;}
+        .content1 li div.content_left{margin-right: 1rem; float: left; height: 4rem;width: 3rem;}
+        .content1 li div.content_left img{width: 100%;height: 100%;}
+        .content1 li div.content_right{float: left;height: 4rem;width: 12rem;}
+        .content1 li div.content_right p{color: #333; margin: 0; font-size: 12px;padding-left: 0;width: 13rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+        .content1 li div.content_right p.content_con{color: #929292;}
+        .content1 li div.content_right p.author{color: #929292;}
+        .content1 li div.content_right p.bookName{margin-top: 5px;}
+        .content1 li:last-child{margin-bottom: 2.2rem;}
+        .content-block{padding: 0;margin: 0;}
+    </style>
+</head>
+
+<body>
+    <header class="bar bar-nav">
+        <a class="icon pull-left" href="javascript:history.go(-1)">
+            <img id="left" src="img/left.png" alt="">
+        </a>
+        <h1 class="title">查询</h1>
+    </header>
+    <ul class="content1 cen">
+
+    </ul>
+
+</body>
+
+</html>
+<script src="js/ajax.js"></script>
+<script>
+    var baseURL = "http://127.0.0.1:8000";
+    var id = localStorage.getItem("search");
+    var oUl = document.getElementsByClassName("cen")[0];
+    var d = [];
+        ajax({
+        url : baseURL + "/ranking/" + id,
+        method : "get",
+        data : {},
+        success : function(response){
+            console.log(JSON.parse(response))
+            var qer = JSON.parse(response).ranking.books;
+            console.log(qer);
+            var arr = [];
+            for(var i = 0; i < qer.length; i++){
+                d.push(qer[i]._id)
+                 var li1 = document.createElement("li");
+                 oUl.appendChild(li1);
+                 var div1 = document.createElement("div");
+                 li1.appendChild(div1);
+                 div1.className = "content_left";
+                 var img1 = document.createElement("img");
+                 div1.appendChild(img1);
+                 img1.src = "img/book_img.png";
+                 var div2 = document.createElement("div");
+                 li1.appendChild(div2);
+                 div2.className = "content_right";
+                 var p1 = document.createElement("p");
+                 div2.appendChild(p1);
+                 p1.className = "bookName";
+                 p1.innerHTML = qer[i].title;
+                 var p2 = document.createElement("p");
+                 div2.appendChild(p2);
+                 p2.className = "author";
+                 p2.innerHTML = qer[i].author + " |";
+                 var p3 = document.createElement("p");
+                 div2.appendChild(p3);
+                 p3.className = "content_con";
+                 p3.innerHTML = qer[i].shortIntro;
+                var oli1 = oUl.getElementsByTagName("li");
+                // // var span3 = document.getElementsByClassName("sp");
+                for(var i = 0; i < oli1.length; i++){
+                    oli1[i].index = i;
+                    oli1[i].onclick = function(){
+                        localStorage.setItem("id",d[this.index]);
+                        location.href = "classify3.html";
+                    }
+                }
+            }
+            // var arr1 = removeDuplicatedItem(arr);
+            // console.log(arr1)
+            // for(var w = 0; w < arr1.length; w++){
+            //     var aspan = document.createElement("span");
+            //     aspan.innerHTML = arr1[w];
+            //     fenle2.appendChild(aspan);
+            // }
+            
+        },
+        async : true
+    })
+   
+
+</script>

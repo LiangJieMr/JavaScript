@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="管理系统.css">
+</head>
+<body>
+    <!-- 管理系统-->
+    <div id="box">
+        <h2>学生管理系统</h2>
+        <input type="button" value="添加学生" id="add">
+        <table id="guanLi" border="1" cellpadding="1" cellspacing="1">
+            <tr id="tr">
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td>1号</td>
+                <td>男</td>
+                <td>20</td>
+                <td>
+                    <a class="update" href="#">修改</a>
+                    <a class="remove" href="#">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2号</td>
+                <td>女</td>
+                <td>19</td>
+                <td>
+                    <a class="update" href="#">修改</a>
+                    <a class="remove" href="#">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- 修改系统-->
+    <div id="box2">
+        <h2>学生信息</h2>
+        <lable>
+            姓名: <input type="text" value="" id="name2">
+        </lable>
+        <br>
+        <lable>
+            性别: <input type="text" value="" id="sex2">
+        </lable>
+        <br>
+        <lable>
+            年龄: <input type="text" value="" id="age2">
+        </lable>
+        <input type="button" value="确认修改" id="up">
+        <input type="button" value="关闭" id="close">
+    </div>
+    <!--添加学生-->
+    <div id="box3">
+        <h2>添加学生</h2>
+        <lable>
+            姓名: <input type="text" value="" id="name3">
+        </lable>
+        <br>
+        <lable>
+            性别: <input type="text" value="" id="sex3">
+        </lable>
+        <br>
+        <lable>
+            年龄: <input type="text" value="" id="age3">
+        </lable>
+        <input type="button" value="确认添加" id="add1">
+        <input type="button" value="关闭" id="close1">
+    </div>
+</body>
+</html>
+<script src="管理系统.js"></script>

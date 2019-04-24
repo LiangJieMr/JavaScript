@@ -86,6 +86,12 @@
     var baseURL = "http://127.0.0.1:8000";
     var aUl = document.getElementsByTagName("ul");
     var aa = document.getElementsByTagName("a")
+    //创建一个数组存储每个周榜id
+    var id_id = [];
+    //创建一个数组存储每个月榜id
+    var monthRank = [];
+    //创建一个数组存储总榜id
+    var totalRank = [];
     ajax({
         url : baseURL + "/ranking/gender",
         method : "get",
@@ -98,12 +104,34 @@
                 var li = document.createElement("li");
                 li.innerHTML = data.male[i].title;
                 aUl[0].appendChild(li);
+                id_id.push(data.male[i]._id)
+                monthRank.push(data.male[i].monthRank)
+                totalRank.push(data.male[i].totalRank)
             }
+            
+            
             // 女生
             for(var i = 0; i < data.female.length; i++){
                 var li = document.createElement("li");
                 li.innerHTML = data.female[i].title;
                 aUl[1].appendChild(li);
+                id_id.push(data.female[i]._id)
+                monthRank.push(data.male[i].monthRank)
+                totalRank.push(data.male[i].totalRank)
+            }
+            console.log(monthRank)
+           var oLi = document.getElementsByTagName("li");
+            for(var i = 0; i < oLi.length; i++){
+                oLi[i].index = i;
+                    oLi[i].onclick = function(){
+                    console.log(id_id[this.index])
+                    console.log(monthRank[this.index])
+                    console.log(totalRank[this.index])
+                    localStorage.setItem("id_id",id_id[this.index])
+                    localStorage.setItem("monthRank",monthRank[this.index])
+                    localStorage.setItem("totalRank",totalRank[this.index])
+                     location.href = "ranking1.html";
+                }
             }
         },
         async : true

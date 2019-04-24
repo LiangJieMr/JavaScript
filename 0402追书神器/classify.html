@@ -210,23 +210,24 @@
                 li.appendChild(br);
                 li.appendChild(span);
             }
-            //事件委托Event对象提供了一个属性叫target，可以返回事件的目标节点
-            function getTarget(e){
-                var e = e || window.event;
-                if(e.target){
-                    return e.target;
-                }else{
-                    return e.srcElement;
+            var oUl = document.getElementsByTagName("li");
+            console.log(oUl)
+            for(var i = 0; i < oUl.length; i++){
+                oUl[i].index = i;
+                // var a = oUl[i].index;
+                oUl[i].onclick = function(){
+                    console.log(this.innerHTML)
+                    localStorage.setItem("bookname",oUl[this.index].innerHTML);
+                    location.href = "classify2.html"
                 }
             }
-            var oUl = document.getElementsByTagName("ul")[0];
-            oUl.onmouseover = function(){
-                var elements = getTarget(event)
-                if(elements.nodeName.toLowerCase = "li"){
-                    // console.log(elements.innerText)
-                    localStorage.setItem("bookname",elements.innerHTML);
-                }
-            }
+            // oUl.onmouseover = function(){
+            //     var elements = getTarget(event)
+            //     if(elements.nodeName.toLowerCase = "li"){
+            //         // console.log(elements.innerText)
+            //         localStorage.setItem("bookname",elements.innerHTML);
+            //     }
+            // }
         },
         async : true
     })

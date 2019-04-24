@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div,h3{margin: 0;padding: 0;}
+        #box{width: 350px;height: 250px;border: 1px solid #ccc;position: absolute;top: 0px;left: 0px;right: 0px;bottom: 0px;margin: auto;}
+        #box h3{text-align: center;width: 100%;height: 35px;line-height: 35px;background: #eee;}
+        #box #content{background: darkorange;text-align: center;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h3>标题</h3>
+        <div id="content">
+            我想好好学习
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var oBox = document.getElementById("box");
+    
+    //获取浏览器窗口的大小
+    function getInner(){
+        if(typeof window.innerWidth != "undefined"){
+            return {
+                width : window.innerWidth,
+                height : window.innerHeight
+            }
+        }else{
+            return {
+                width : document.documentElement.clientWidth,
+                height : document.documentElement.clientHeight
+            }
+        }
+    }
+    oBox.onmousedown = function(event){
+        var e = e || window.event;
+        var disX = e.clientX;
+        var disY = e.clientY;
+        document.onmousemove = function(event){
+            var le = oBox.offsetLeft;
+            var re = oBox.offsetTop;
+            oBox.style.left = disX + "px";
+        }
+    }
+
+
+
+</script>

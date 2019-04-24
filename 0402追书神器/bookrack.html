@@ -33,14 +33,24 @@
         .icon-shuji:before {
             color: #929292;
         }
-        .btn{
+
+        .btn {
             display: block;
-            background:#26a2ff;
+            background: #26a2ff;
             margin: 10rem auto;
             color: #fff;
             border: none;
             outline: none;
         }
+        #content{clear: both;height: auto;padding-bottom: .5rem; list-style: none;width: 95%;margin: 0 auto;padding: 0;margin-bottom: 0;}
+        #content li{overflow: hidden; clear: both;padding: .3rem 0;}
+        #content li div.content_left{margin-right: 1rem; float: left; height: 4rem;width: 3rem;}
+        #content li div.content_left img{width: 100%;height: 100%;}
+        #content li div.content_right{float: left;height: 4rem;width: 13rem;border-bottom: 1px solid #eee;padding-top: 10px;}
+        #content li div.content_right p{line-height: 20px; color: #333; margin: 0; font-size: 12px;padding-left: 0;width: 13rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+        #content li div.content_right p.content_con{color: #929292;margin-top: 5px;}
+        #content li div.content_right p.author{color: #929292;}
+        #content li div.content_right p.bookName{margin-top: 5px;}
     </style>
 </head>
 
@@ -55,13 +65,24 @@
             <li>
                 <div id="img"></div>
                 <div id="inn">
-                    
+
                 </div>
             </li>
         </ul>
     </div>
     <!-- 身体 -->
-    <button class="btn">添加小说</button>
+     <button class="btn">添加小说</button>
+    <ul id="content">
+        <!-- <li>
+        <div class="content_left">
+            <img src="img/book_img.png" alt="">
+        </div>
+            <div class="content_right">
+                <p class="bookName">武道巅峰</p>
+                <p class="content_con">哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈啊哈哈哈</p>
+            </div>
+        </li> -->
+    </ul>
     <!-- 工具栏 -->
     <nav class="bar bar-tab">
         <a class="tab-item external active" href="#">
@@ -84,30 +105,134 @@
 </body>
 
 </html>
+<script src="js/ajax.js"></script>
 <script>
+    var bookid = localStorage.getItem("array");
+    if(bookid != null){
+        bookid  = bookid.replace("[","")
+        bookid  =  bookid.replace(/\"/g,"")
+        bookid  =  bookid.replace("]","")
+        // console.log(bookid)
+        var b = bookid.split(",")
+    }
 
+    // console.log(b)
+    // var c = [];
+    // for(var i = 0; i < bookid.length; i++){
+    //     // bookid[i].index = i;
+    //
+    //     // console.log(bookid[i])
+    // }
+
+    // var arrayObject = [];
+    // localStorage.setItem("array",JSON.stringify(arrayObject));
+    // var bookid = JSON.parse(localStorage.getItem("array"));
+    // console.log(bookid)
     var aa = document.getElementsByTagName("a")
     var btn = document.getElementsByClassName("btn")[0];
-
-
     btn.onclick = function(){
         location.href = "classify.html"
     }
-     //点击a标签跳转
-     for(var i =0; i < aa.length; i++){
+
+    // btn.onclick = function () {
+    //     location.href = "classify.html"
+    // }
+    //点击a标签跳转
+    for (var i = 0; i < aa.length; i++) {
         aa[i].index = i;
         // console.log(this.index)
-        aa[i].onclick = function(){
-           if(this.index == 0){
+        aa[i].onclick = function () {
+            if (this.index == 0) {
                 location.href = "bookrack.html"
-           }else if(this.index == 1){
+            } else if (this.index == 1) {
                 location.href = "classify.html"
-           }else if(this.index == 2){
+            } else if (this.index == 2) {
                 location.href = "ranking.html"
-           }else{
+            } else {
                 location.href = "search.html"
-           }
+            }
         }
     }
+
+    var time = new Date();
+    console.log(time.getTime())
+    var baseURL = "http://127.0.0.1:8000";
+    // var BOOK = bookid[i].substring(2,bookid.length-2)
+    // console.log(BOOK)
+    if (bookid != null) {
+        btn.style.display = "none";
+        for(var i = 0; i < b.length; i++){
+
+
+        ajax({
+            url: baseURL + "/book/" + b[i],
+            method: "get",
+            data: {},
+            success: function (response) {
+                console.log(JSON.parse(response))
+                var qer = JSON.parse(response);
+                // for(var i = 0; i < .length; i++){
+
+
+                var li1 = document.createElement("li");
+                content.appendChild(li1);
+                var div1 = document.createElement("div");
+                li1.appendChild(div1);
+                div1.className = "content_left";
+                var img1 = document.createElement("img");
+                div1.appendChild(img1);
+                img1.src = "img/book_img.png";
+                var div2 = document.createElement("div");
+                li1.appendChild(div2);
+                div2.className = "content_right";
+                var p1 = document.createElement("p");
+                div2.appendChild(p1);
+                p1.className = "bookName";
+                p1.innerHTML = qer.title;
+                var p3 = document.createElement("p");
+                div2.appendChild(p3);
+                p3.className = "content_con";
+                var qq = qer.updated;
+                var xx = qq.substr(0, 10)
+                var ff = xx.split("-")
+                var hh = ff.join("/")
+                var cc = qq.substr(11, 8);
+                // console.log(xx)
+                // console.log(ff)
+                // console.log(hh)
+                // console.log(cc)
+                var oldTime = (new Date(hh + " " + cc)).getTime();
+                // console.log(oldTime)
+                var oo = time.getTime() - oldTime;
+                // console.log(oo)
+                var newTime = new Date(oo)
+                // console.log(newTime)
+                let days = Math.floor(newTime / (24 * 3600 * 1000)); // 计算出天数
+                let leavel = newTime % (24 * 3600 * 1000); // 计算天数后剩余的时间
+                let hours = Math.floor(leavel / (3600 * 1000)); // 计算剩余的小时数
+                let leavel2 = leavel % (3600 * 1000); // 计算剩余小时后剩余的毫秒数
+                let minutes = Math.floor(leavel2 / (60 * 1000)); // 计算剩余的分钟数
+                // console.log(hours)
+                p3.innerHTML = hours + "小时前:" + qer.lastChapter;
+
+                // var content = document.getElementById("content");
+                var cli = content.getElementsByTagName("li");
+                for(var i=0;i<cli.length;i++){
+                    cli[i].index = i;
+                    cli[i].onclick=function () {
+                        console.log(b[this.index])
+                        localStorage.setItem("id",b[this.index])
+                        location.href= 'classify3.html'
+                    }
+                }
+            },
+            async: true
+        })
+        }
+    }else{
+        btn.style.display = "block";
+    }
+
+
 
 </script>
