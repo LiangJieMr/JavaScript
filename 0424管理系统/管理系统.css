@@ -2,7 +2,7 @@
 /*管理系统*/
 #box{display: block; width: 500px;margin: 100px auto;text-align: center;}
 #guanLi{margin: 0 auto;}
-#guanLi td{width: 100px;text-align: center;}
+#guanLi tr td{width: 100px;text-align: center;}
 #tr{background: #cccccc;}
 /*修改系统*/
 #box2{display: none; width: 220px;height: auto;margin: 100px auto;border: 1px solid #ccc;text-align: left;padding: 30px 50px;}

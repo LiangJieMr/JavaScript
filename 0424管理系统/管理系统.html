@@ -9,7 +9,12 @@
     <!-- 管理系统-->
     <div id="box">
         <h2>学生管理系统</h2>
+        <input type="button" value="升序" id="asc">
+        <input type="button" value="降序" id="desc">
         <input type="button" value="添加学生" id="add">
+        <!--模糊搜索-->
+        <input type="text" value="" id="container" placeholder="根据姓名进行搜索">
+        <input type="button" value = "搜索" id="search">
         <table id="guanLi" border="1" cellpadding="1" cellspacing="1">
             <tr id="tr">
                 <td>姓名</td>
@@ -30,6 +35,15 @@
                 <td>2号</td>
                 <td>女</td>
                 <td>19</td>
+                <td>
+                    <a class="update" href="#">修改</a>
+                    <a class="remove" href="#">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>3号</td>
+                <td>女</td>
+                <td>23</td>
                 <td>
                     <a class="update" href="#">修改</a>
                     <a class="remove" href="#">删除</a>
@@ -71,6 +85,7 @@
         <input type="button" value="确认添加" id="add1">
         <input type="button" value="关闭" id="close1">
     </div>
+
 </body>
 </html>
 <script src="管理系统.js"></script>
