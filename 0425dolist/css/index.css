@@ -1,0 +1,19 @@
+*{margin: 0px;padding: 0px;}
+#box{width: 900px;height: 500px;position: absolute;top: 0px;left: 0px;right: 0px;bottom: 0px;margin: auto;border: 1px solid #ccc;}
+#box h3{width: 100%;height: 38px;background: #000;opacity: 0.3;filter: alpha(opacity=30);}
+#box h3 #header{width: 38px;height: 38px;margin-left: 10px;float: left;}
+#box h3 #header img{width: 100%;height: 100%;}
+#box h3 #header_con{float: left;color: #fff;line-height: 38px;margin-left: 20px;}
+#box #container{padding: 20px;}
+#box #container #tex{margin-left:100px;margin-top: 10px;float: left;}
+#box #container #add{cursor: pointer; position: relative;top: 60px; float: left; display: block;width: 40px;height: 40px;background: url("../img/add.png")no-repeat; background-size:cover; }
+#box #container #eee{width: 750px;margin: 0 auto;overflow: hidden;}
+#box #container #eee #show{clear: both;width: 650px;height: 280px;margin: 0 auto;padding-top: 20px;overflow: hidden;}
+#box #container #eee #show  .inn{width: 708px; height:28px;line-height: 28px; overflow: hidden;position: relative;left: 10px;}
+#box #container #eee #show  .inn .chuLi{cursor: pointer; position:relative; top:2px; float: left; display: block;width: 22px;height: 20px;background: url("../img/untreated.png")no-repeat;background-size: cover;}
+#box #container #eee #show  .inn .remove{cursor: pointer;position:relative; top:2px;float: left;display: block;width: 22px;height: 22px;background: url("../img/remove.png")no-repeat;background-size: cover;}
+#box #container #eee #show  .inn .remove1{float: right;display: block;cursor: pointer;}
+#box #container #eee #show  .inn .remove1 a{color: red;text-decoration: none;}
+#box #container #eee #show  .inn s{float: left;font-size: 18px;color: #cccccc;width: 590px;}
+#box #container #eee #show  .inn p{width: 590px; float: left;font-size: 18px;color: #cccccc;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+
